@@ -34,12 +34,12 @@ Users can view courts that are nearest to them and the app tells them if there i
 * User can view how many people there are at a given court.
 * User can select a court they are headed to. 
 * User can view details of the park including rating and photos of the court.
-* User can rate a court.
-* User can search for a court.
 
 **Optional Nice-to-have Stories**
 * User can post highlights recorded from a game and associate it with a court.
 * User can record their stats for a given date on a specific court. 
+* User can rate a court.
+* User can search for a court.
 
 ### 2. Screen Archetypes
 
