@@ -77,8 +77,7 @@ Users can view courts that are nearest to them and the app tells them if there i
    => Court Detail Screen
 
 ## Wireframes
-[Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+![](./court_finder_wireframes.png)
 
 ### [BONUS] Digital Wireframes & Mockups
 
