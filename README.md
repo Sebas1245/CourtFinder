@@ -79,10 +79,6 @@ Users can view courts that are nearest to them and the app tells them if there i
 ## Wireframes
 ![](./courtfinder_wireframes.jpeg)
 
-### [BONUS] Digital Wireframes & Mockups
-
-### [BONUS] Interactive Prototype
-
 ## Schema 
 ### Models
 #### Users 
