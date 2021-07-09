@@ -84,10 +84,45 @@ Users can view courts that are nearest to them and the app tells them if there i
 ### [BONUS] Interactive Prototype
 
 ## Schema 
-[This section will be completed in Unit 9]
 ### Models
-[Add table of models]
+#### Users 
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| objectId | String | unique id for the user (default field) |
+| emailVerified | Boolean | says if user has verified their email or not (default field) |
+| updatedAt | Date | timestamp for when the user was last modified (default field) |
+| authData | Object | JSON object that stores other Auth data such as Oauth information (default field) |
+| username | String | Username to identify a user (default field) |
+| createdAt | Date | timestamp for when the user was created (default field) |
+| password | String | password for user (default field) |
+| email | String | user's email (default field) |
+| headedToPark | String | Google Maps ID string that identifies the park the person is headed to (may be null in some rows) |
+| lastSetHeadedToPark | Date | Timestamp for last time the user clicked on OMW button (may be null in some rows) |
+#### Parks 
+NOTE: This model will not exist on Parse DB. This is designed to facilitate the manipulation of data retrieved from Google Maps API. 
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| placeID | String | Google Maps place ID |
+| address | String | Address fetched from Google Maps API |
+| rating | Float | Rating fetched from Google Maps API |
+| distanceFromUser | Float | Calculated distance using current user location and returned geolocation from Google Maps API |
+| players | Int | calculated field that holds the amount of players at a park |
+| photos | NSArray | array that holds the photos for the park |
+
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
+- Courts Screen 
+  - (Read/GET) Query Google Maps Place Search endpoint
+  - (Read/GET) Query Google Maps Place Details endpoint
+  - (Read/GET) Query Google Maps Place Photos endpoint 
+- Courts Detail Screen
+  - (Update/PUT) Update headedToPark field  
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
+  - Place search (get the place IDs for something that is of type *park* or *basketball court*)
+    Endpoint - https://maps.googleapis.com/maps/api/place/nearbysearch/output?parameters
+    Documentation - https://developers.google.com/maps/documentation/places/web-service/search#PlaceSearchRequests
+  - Place details (get the place details) 
+    Endpoint - Google Maps Places SDK for iOS
+    Documentation - https://developers.google.com/maps/documentation/places/ios-sdk/place-details?hl=en
+  - Place photos (get the place photos)
+    Endpoint - Google Maps Places SDK for iOS
+    Documentation - https://developers.google.com/maps/documentation/places/ios-sdk/photos?hl=en
