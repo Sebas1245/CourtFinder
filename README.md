@@ -40,6 +40,7 @@ Users can view courts that are nearest to them and the app tells them if there i
 * User can record their stats for a given date on a specific court. 
 * User can rate a court.
 * User can search for a court.
+* User can customize the way courts are sorted on the main Courts screen. 
 
 ### 2. Screen Archetypes
 
@@ -70,9 +71,9 @@ Users can view courts that are nearest to them and the app tells them if there i
 **Flow Navigation** (Screen to Screen)
 
 * Login Screen
-   => Home
+   => Courts 
 * Registration Screen
-   => Home
+   => Courts
 * Courts Screen
    => Court Detail Screen
 
@@ -92,6 +93,7 @@ Users can view courts that are nearest to them and the app tells them if there i
 | createdAt | Date | timestamp for when the user was created (default field) |
 | password | String | password for user (default field) |
 | email | String | user's email (default field) |
+| phone | String | user's phone number |
 | headedToPark | String | Google Maps ID string that identifies the park the person is headed to (may be null in some rows) |
 | lastSetHeadedToPark | Date | Timestamp for last time the user clicked on OMW button (may be null in some rows) |
 #### Parks 
