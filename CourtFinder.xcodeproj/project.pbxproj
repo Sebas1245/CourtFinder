@@ -1,0 +1,593 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		794F7190269CBB8700529339 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F718F269CBB8700529339 /* AppDelegate.m */; };
+		794F7193269CBB8700529339 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F7192269CBB8700529339 /* SceneDelegate.m */; };
+		794F7196269CBB8700529339 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F7195269CBB8700529339 /* ViewController.m */; };
+		794F7199269CBB8700529339 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 794F7197269CBB8700529339 /* Main.storyboard */; };
+		794F719B269CBB8800529339 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 794F719A269CBB8800529339 /* Assets.xcassets */; };
+		794F719E269CBB8800529339 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 794F719C269CBB8800529339 /* LaunchScreen.storyboard */; };
+		794F71A1269CBB8800529339 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F71A0269CBB8800529339 /* main.m */; };
+		794F71AB269CBB8800529339 /* CourtFinderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F71AA269CBB8800529339 /* CourtFinderTests.m */; };
+		794F71B6269CBB8800529339 /* CourtFinderUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F71B5269CBB8800529339 /* CourtFinderUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		794F71A7269CBB8800529339 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 794F7183269CBB8700529339 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 794F718A269CBB8700529339;
+			remoteInfo = CourtFinder;
+		};
+		794F71B2269CBB8800529339 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 794F7183269CBB8700529339 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 794F718A269CBB8700529339;
+			remoteInfo = CourtFinder;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		794F718B269CBB8700529339 /* CourtFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CourtFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		794F718E269CBB8700529339 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		794F718F269CBB8700529339 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		794F7191269CBB8700529339 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		794F7192269CBB8700529339 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		794F7194269CBB8700529339 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		794F7195269CBB8700529339 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		794F7198269CBB8700529339 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		794F719A269CBB8800529339 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		794F719D269CBB8800529339 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		794F719F269CBB8800529339 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		794F71A0269CBB8800529339 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		794F71A6269CBB8800529339 /* CourtFinderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CourtFinderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		794F71AA269CBB8800529339 /* CourtFinderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourtFinderTests.m; sourceTree = "<group>"; };
+		794F71AC269CBB8800529339 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		794F71B1269CBB8800529339 /* CourtFinderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CourtFinderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		794F71B5269CBB8800529339 /* CourtFinderUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourtFinderUITests.m; sourceTree = "<group>"; };
+		794F71B7269CBB8800529339 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		794F7188269CBB8700529339 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		794F71A3269CBB8800529339 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		794F71AE269CBB8800529339 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		794F7182269CBB8700529339 = {
+			isa = PBXGroup;
+			children = (
+				794F718D269CBB8700529339 /* CourtFinder */,
+				794F71A9269CBB8800529339 /* CourtFinderTests */,
+				794F71B4269CBB8800529339 /* CourtFinderUITests */,
+				794F718C269CBB8700529339 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		794F718C269CBB8700529339 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				794F718B269CBB8700529339 /* CourtFinder.app */,
+				794F71A6269CBB8800529339 /* CourtFinderTests.xctest */,
+				794F71B1269CBB8800529339 /* CourtFinderUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		794F718D269CBB8700529339 /* CourtFinder */ = {
+			isa = PBXGroup;
+			children = (
+				794F718E269CBB8700529339 /* AppDelegate.h */,
+				794F718F269CBB8700529339 /* AppDelegate.m */,
+				794F7191269CBB8700529339 /* SceneDelegate.h */,
+				794F7192269CBB8700529339 /* SceneDelegate.m */,
+				794F7194269CBB8700529339 /* ViewController.h */,
+				794F7195269CBB8700529339 /* ViewController.m */,
+				794F7197269CBB8700529339 /* Main.storyboard */,
+				794F719A269CBB8800529339 /* Assets.xcassets */,
+				794F719C269CBB8800529339 /* LaunchScreen.storyboard */,
+				794F719F269CBB8800529339 /* Info.plist */,
+				794F71A0269CBB8800529339 /* main.m */,
+			);
+			path = CourtFinder;
+			sourceTree = "<group>";
+		};
+		794F71A9269CBB8800529339 /* CourtFinderTests */ = {
+			isa = PBXGroup;
+			children = (
+				794F71AA269CBB8800529339 /* CourtFinderTests.m */,
+				794F71AC269CBB8800529339 /* Info.plist */,
+			);
+			path = CourtFinderTests;
+			sourceTree = "<group>";
+		};
+		794F71B4269CBB8800529339 /* CourtFinderUITests */ = {
+			isa = PBXGroup;
+			children = (
+				794F71B5269CBB8800529339 /* CourtFinderUITests.m */,
+				794F71B7269CBB8800529339 /* Info.plist */,
+			);
+			path = CourtFinderUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		794F718A269CBB8700529339 /* CourtFinder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 794F71BA269CBB8800529339 /* Build configuration list for PBXNativeTarget "CourtFinder" */;
+			buildPhases = (
+				794F7187269CBB8700529339 /* Sources */,
+				794F7188269CBB8700529339 /* Frameworks */,
+				794F7189269CBB8700529339 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CourtFinder;
+			productName = CourtFinder;
+			productReference = 794F718B269CBB8700529339 /* CourtFinder.app */;
+			productType = "com.apple.product-type.application";
+		};
+		794F71A5269CBB8800529339 /* CourtFinderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 794F71BD269CBB8800529339 /* Build configuration list for PBXNativeTarget "CourtFinderTests" */;
+			buildPhases = (
+				794F71A2269CBB8800529339 /* Sources */,
+				794F71A3269CBB8800529339 /* Frameworks */,
+				794F71A4269CBB8800529339 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				794F71A8269CBB8800529339 /* PBXTargetDependency */,
+			);
+			name = CourtFinderTests;
+			productName = CourtFinderTests;
+			productReference = 794F71A6269CBB8800529339 /* CourtFinderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		794F71B0269CBB8800529339 /* CourtFinderUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 794F71C0269CBB8800529339 /* Build configuration list for PBXNativeTarget "CourtFinderUITests" */;
+			buildPhases = (
+				794F71AD269CBB8800529339 /* Sources */,
+				794F71AE269CBB8800529339 /* Frameworks */,
+				794F71AF269CBB8800529339 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				794F71B3269CBB8800529339 /* PBXTargetDependency */,
+			);
+			name = CourtFinderUITests;
+			productName = CourtFinderUITests;
+			productReference = 794F71B1269CBB8800529339 /* CourtFinderUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		794F7183269CBB8700529339 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					794F718A269CBB8700529339 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					794F71A5269CBB8800529339 = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = 794F718A269CBB8700529339;
+					};
+					794F71B0269CBB8800529339 = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = 794F718A269CBB8700529339;
+					};
+				};
+			};
+			buildConfigurationList = 794F7186269CBB8700529339 /* Build configuration list for PBXProject "CourtFinder" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 794F7182269CBB8700529339;
+			productRefGroup = 794F718C269CBB8700529339 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				794F718A269CBB8700529339 /* CourtFinder */,
+				794F71A5269CBB8800529339 /* CourtFinderTests */,
+				794F71B0269CBB8800529339 /* CourtFinderUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		794F7189269CBB8700529339 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				794F719E269CBB8800529339 /* LaunchScreen.storyboard in Resources */,
+				794F719B269CBB8800529339 /* Assets.xcassets in Resources */,
+				794F7199269CBB8700529339 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		794F71A4269CBB8800529339 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		794F71AF269CBB8800529339 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		794F7187269CBB8700529339 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				794F7196269CBB8700529339 /* ViewController.m in Sources */,
+				794F7190269CBB8700529339 /* AppDelegate.m in Sources */,
+				794F71A1269CBB8800529339 /* main.m in Sources */,
+				794F7193269CBB8700529339 /* SceneDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		794F71A2269CBB8800529339 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				794F71AB269CBB8800529339 /* CourtFinderTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		794F71AD269CBB8800529339 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				794F71B6269CBB8800529339 /* CourtFinderUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		794F71A8269CBB8800529339 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 794F718A269CBB8700529339 /* CourtFinder */;
+			targetProxy = 794F71A7269CBB8800529339 /* PBXContainerItemProxy */;
+		};
+		794F71B3269CBB8800529339 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 794F718A269CBB8700529339 /* CourtFinder */;
+			targetProxy = 794F71B2269CBB8800529339 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		794F7197269CBB8700529339 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				794F7198269CBB8700529339 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		794F719C269CBB8800529339 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				794F719D269CBB8800529339 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		794F71B8269CBB8800529339 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		794F71B9269CBB8800529339 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		794F71BB269CBB8800529339 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M4MDH6LB49;
+				INFOPLIST_FILE = CourtFinder/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.facebook.CourtFinder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		794F71BC269CBB8800529339 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M4MDH6LB49;
+				INFOPLIST_FILE = CourtFinder/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.facebook.CourtFinder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		794F71BE269CBB8800529339 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M4MDH6LB49;
+				INFOPLIST_FILE = CourtFinderTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.facebook.CourtFinderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CourtFinder.app/CourtFinder";
+			};
+			name = Debug;
+		};
+		794F71BF269CBB8800529339 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M4MDH6LB49;
+				INFOPLIST_FILE = CourtFinderTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.facebook.CourtFinderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CourtFinder.app/CourtFinder";
+			};
+			name = Release;
+		};
+		794F71C1269CBB8800529339 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M4MDH6LB49;
+				INFOPLIST_FILE = CourtFinderUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.facebook.CourtFinderUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CourtFinder;
+			};
+			name = Debug;
+		};
+		794F71C2269CBB8800529339 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M4MDH6LB49;
+				INFOPLIST_FILE = CourtFinderUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.facebook.CourtFinderUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CourtFinder;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		794F7186269CBB8700529339 /* Build configuration list for PBXProject "CourtFinder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				794F71B8269CBB8800529339 /* Debug */,
+				794F71B9269CBB8800529339 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		794F71BA269CBB8800529339 /* Build configuration list for PBXNativeTarget "CourtFinder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				794F71BB269CBB8800529339 /* Debug */,
+				794F71BC269CBB8800529339 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		794F71BD269CBB8800529339 /* Build configuration list for PBXNativeTarget "CourtFinderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				794F71BE269CBB8800529339 /* Debug */,
+				794F71BF269CBB8800529339 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		794F71C0269CBB8800529339 /* Build configuration list for PBXNativeTarget "CourtFinderUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				794F71C1269CBB8800529339 /* Debug */,
+				794F71C2269CBB8800529339 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 794F7183269CBB8700529339 /* Project object */;
+}
