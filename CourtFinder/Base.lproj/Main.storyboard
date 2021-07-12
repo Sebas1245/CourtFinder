@@ -251,9 +251,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="th3-ut-cZ2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1758" y="1509"/>
+            <point key="canvasLocation" x="1757" y="1535"/>
         </scene>
-        <!--Item 1-->
+        <!--Courts-->
         <scene sceneID="f8p-yz-zuo">
             <objects>
                 <viewController id="r6B-j9-CLO" sceneMemberID="viewController">
@@ -272,11 +272,11 @@
                         <viewLayoutGuide key="safeArea" id="A72-3J-K9l"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="dwZ-QN-2kh"/>
+                    <tabBarItem key="tabBarItem" title="Courts" id="dwZ-QN-2kh"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F15-0v-ZHk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-538" y="1510"/>
+            <point key="canvasLocation" x="-484" y="1535"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="C0p-Ck-QBr">
