@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		098728FBD1351E33B8FFA261 /* Pods_CourtFinderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D667A277B6EB1F5A1C206B6 /* Pods_CourtFinderTests.framework */; };
+		1DEF4A24B1CA0861A5A76D60 /* Pods_CourtFinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B7FA35AA86CE0F27B0C58E4 /* Pods_CourtFinder.framework */; };
 		794F7190269CBB8700529339 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F718F269CBB8700529339 /* AppDelegate.m */; };
 		794F7193269CBB8700529339 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F7192269CBB8700529339 /* SceneDelegate.m */; };
 		794F7196269CBB8700529339 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F7195269CBB8700529339 /* ViewController.m */; };
@@ -16,6 +18,9 @@
 		794F71A1269CBB8800529339 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F71A0269CBB8800529339 /* main.m */; };
 		794F71AB269CBB8800529339 /* CourtFinderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F71AA269CBB8800529339 /* CourtFinderTests.m */; };
 		794F71B6269CBB8800529339 /* CourtFinderUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F71B5269CBB8800529339 /* CourtFinderUITests.m */; };
+		79F77864269CC40A000814E4 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F77863269CC40A000814E4 /* LoginViewController.m */; };
+		79F77867269CC418000814E4 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F77866269CC418000814E4 /* SignUpViewController.m */; };
+		B90D590D03219CCEFAEF5BEF /* Pods_CourtFinder_CourtFinderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 398DBE597A37800C84D92D94 /* Pods_CourtFinder_CourtFinderUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +41,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B6F5D02A243425DC8FAEF5A /* Pods-CourtFinder-CourtFinderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourtFinder-CourtFinderUITests.debug.xcconfig"; path = "Target Support Files/Pods-CourtFinder-CourtFinderUITests/Pods-CourtFinder-CourtFinderUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		203746D3BAF27C345CEB0D6A /* Pods-CourtFinderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourtFinderTests.release.xcconfig"; path = "Target Support Files/Pods-CourtFinderTests/Pods-CourtFinderTests.release.xcconfig"; sourceTree = "<group>"; };
+		398DBE597A37800C84D92D94 /* Pods_CourtFinder_CourtFinderUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CourtFinder_CourtFinderUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		50F90708AFEC24C9279329DE /* Pods-CourtFinderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourtFinderTests.debug.xcconfig"; path = "Target Support Files/Pods-CourtFinderTests/Pods-CourtFinderTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5B7FA35AA86CE0F27B0C58E4 /* Pods_CourtFinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CourtFinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D667A277B6EB1F5A1C206B6 /* Pods_CourtFinderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CourtFinderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		794F718B269CBB8700529339 /* CourtFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CourtFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		794F718E269CBB8700529339 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		794F718F269CBB8700529339 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -54,6 +65,13 @@
 		794F71B1269CBB8800529339 /* CourtFinderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CourtFinderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		794F71B5269CBB8800529339 /* CourtFinderUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourtFinderUITests.m; sourceTree = "<group>"; };
 		794F71B7269CBB8800529339 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		79F77862269CC40A000814E4 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		79F77863269CC40A000814E4 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		79F77865269CC418000814E4 /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		79F77866269CC418000814E4 /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		A1A88E80A9C537756766ABE0 /* Pods-CourtFinder-CourtFinderUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourtFinder-CourtFinderUITests.release.xcconfig"; path = "Target Support Files/Pods-CourtFinder-CourtFinderUITests/Pods-CourtFinder-CourtFinderUITests.release.xcconfig"; sourceTree = "<group>"; };
+		DA3F0E07CA8370EA00FC7492 /* Pods-CourtFinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourtFinder.debug.xcconfig"; path = "Target Support Files/Pods-CourtFinder/Pods-CourtFinder.debug.xcconfig"; sourceTree = "<group>"; };
+		FF9FC4D691A99536F733CA5E /* Pods-CourtFinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourtFinder.release.xcconfig"; path = "Target Support Files/Pods-CourtFinder/Pods-CourtFinder.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DEF4A24B1CA0861A5A76D60 /* Pods_CourtFinder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				098728FBD1351E33B8FFA261 /* Pods_CourtFinderTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,12 +95,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B90D590D03219CCEFAEF5BEF /* Pods_CourtFinder_CourtFinderUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7874165C39335AD612B83C45 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5B7FA35AA86CE0F27B0C58E4 /* Pods_CourtFinder.framework */,
+				398DBE597A37800C84D92D94 /* Pods_CourtFinder_CourtFinderUITests.framework */,
+				5D667A277B6EB1F5A1C206B6 /* Pods_CourtFinderTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		794F7182269CBB8700529339 = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +119,8 @@
 				794F71A9269CBB8800529339 /* CourtFinderTests */,
 				794F71B4269CBB8800529339 /* CourtFinderUITests */,
 				794F718C269CBB8700529339 /* Products */,
+				AD07D18693E601AF1CC5EB21 /* Pods */,
+				7874165C39335AD612B83C45 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,6 +137,9 @@
 		794F718D269CBB8700529339 /* CourtFinder */ = {
 			isa = PBXGroup;
 			children = (
+				79F77861269CC3ED000814E4 /* Views */,
+				79F77860269CC3E4000814E4 /* Models */,
+				79F7785F269CC3D5000814E4 /* ViewControllers */,
 				794F718E269CBB8700529339 /* AppDelegate.h */,
 				794F718F269CBB8700529339 /* AppDelegate.m */,
 				794F7191269CBB8700529339 /* SceneDelegate.h */,
@@ -137,6 +173,44 @@
 			path = CourtFinderUITests;
 			sourceTree = "<group>";
 		};
+		79F7785F269CC3D5000814E4 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				79F77862269CC40A000814E4 /* LoginViewController.h */,
+				79F77863269CC40A000814E4 /* LoginViewController.m */,
+				79F77865269CC418000814E4 /* SignUpViewController.h */,
+				79F77866269CC418000814E4 /* SignUpViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		79F77860269CC3E4000814E4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		79F77861269CC3ED000814E4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AD07D18693E601AF1CC5EB21 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DA3F0E07CA8370EA00FC7492 /* Pods-CourtFinder.debug.xcconfig */,
+				FF9FC4D691A99536F733CA5E /* Pods-CourtFinder.release.xcconfig */,
+				0B6F5D02A243425DC8FAEF5A /* Pods-CourtFinder-CourtFinderUITests.debug.xcconfig */,
+				A1A88E80A9C537756766ABE0 /* Pods-CourtFinder-CourtFinderUITests.release.xcconfig */,
+				50F90708AFEC24C9279329DE /* Pods-CourtFinderTests.debug.xcconfig */,
+				203746D3BAF27C345CEB0D6A /* Pods-CourtFinderTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -144,9 +218,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 794F71BA269CBB8800529339 /* Build configuration list for PBXNativeTarget "CourtFinder" */;
 			buildPhases = (
+				6C071C916022983E27580294 /* [CP] Check Pods Manifest.lock */,
 				794F7187269CBB8700529339 /* Sources */,
 				794F7188269CBB8700529339 /* Frameworks */,
 				794F7189269CBB8700529339 /* Resources */,
+				AB402DB17CDDD5708BFE0DDE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -161,6 +237,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 794F71BD269CBB8800529339 /* Build configuration list for PBXNativeTarget "CourtFinderTests" */;
 			buildPhases = (
+				49E27B1DA4AB05A00558EC6A /* [CP] Check Pods Manifest.lock */,
 				794F71A2269CBB8800529339 /* Sources */,
 				794F71A3269CBB8800529339 /* Frameworks */,
 				794F71A4269CBB8800529339 /* Resources */,
@@ -179,9 +256,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 794F71C0269CBB8800529339 /* Build configuration list for PBXNativeTarget "CourtFinderUITests" */;
 			buildPhases = (
+				9FEAE8FDB26691ECAF71EBF9 /* [CP] Check Pods Manifest.lock */,
 				794F71AD269CBB8800529339 /* Sources */,
 				794F71AE269CBB8800529339 /* Frameworks */,
 				794F71AF269CBB8800529339 /* Resources */,
+				2DCC1D0A170741F3F1CEAD34 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -261,6 +340,109 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2DCC1D0A170741F3F1CEAD34 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CourtFinder-CourtFinderUITests/Pods-CourtFinder-CourtFinderUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CourtFinder-CourtFinderUITests/Pods-CourtFinder-CourtFinderUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CourtFinder-CourtFinderUITests/Pods-CourtFinder-CourtFinderUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		49E27B1DA4AB05A00558EC6A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CourtFinderTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6C071C916022983E27580294 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CourtFinder-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9FEAE8FDB26691ECAF71EBF9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CourtFinder-CourtFinderUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AB402DB17CDDD5708BFE0DDE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CourtFinder/Pods-CourtFinder-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CourtFinder/Pods-CourtFinder-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CourtFinder/Pods-CourtFinder-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		794F7187269CBB8700529339 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -268,8 +450,10 @@
 			files = (
 				794F7196269CBB8700529339 /* ViewController.m in Sources */,
 				794F7190269CBB8700529339 /* AppDelegate.m in Sources */,
+				79F77867269CC418000814E4 /* SignUpViewController.m in Sources */,
 				794F71A1269CBB8800529339 /* main.m in Sources */,
 				794F7193269CBB8700529339 /* SceneDelegate.m in Sources */,
+				79F77864269CC40A000814E4 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +622,7 @@
 		};
 		794F71BB269CBB8800529339 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA3F0E07CA8370EA00FC7492 /* Pods-CourtFinder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -456,6 +641,7 @@
 		};
 		794F71BC269CBB8800529339 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF9FC4D691A99536F733CA5E /* Pods-CourtFinder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -474,6 +660,7 @@
 		};
 		794F71BE269CBB8800529339 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50F90708AFEC24C9279329DE /* Pods-CourtFinderTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -494,6 +681,7 @@
 		};
 		794F71BF269CBB8800529339 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 203746D3BAF27C345CEB0D6A /* Pods-CourtFinderTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -514,6 +702,7 @@
 		};
 		794F71C1269CBB8800529339 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B6F5D02A243425DC8FAEF5A /* Pods-CourtFinder-CourtFinderUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M4MDH6LB49;
@@ -532,6 +721,7 @@
 		};
 		794F71C2269CBB8800529339 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1A88E80A9C537756766ABE0 /* Pods-CourtFinder-CourtFinderUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M4MDH6LB49;

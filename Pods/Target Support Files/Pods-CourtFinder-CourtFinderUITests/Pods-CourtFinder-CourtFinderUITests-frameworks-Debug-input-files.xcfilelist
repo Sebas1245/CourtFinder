@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-CourtFinder-CourtFinderUITests/Pods-CourtFinder-CourtFinderUITests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework
+${BUILT_PRODUCTS_DIR}/LoremIpsum/LoremIpsum.framework
+${BUILT_PRODUCTS_DIR}/Parse/Parse.framework

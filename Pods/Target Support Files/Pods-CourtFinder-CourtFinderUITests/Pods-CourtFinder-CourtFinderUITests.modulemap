@@ -1,0 +1,6 @@
+framework module Pods_CourtFinder_CourtFinderUITests {
+  umbrella header "Pods-CourtFinder-CourtFinderUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
