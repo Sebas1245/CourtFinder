@@ -6,6 +6,8 @@
 //
 
 #import "LoginViewController.h"
+#import "Alert.h"
+#import <Parse/Parse.h>
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
@@ -23,6 +25,16 @@
 }
 
 - (IBAction)handleLogin:(id)sender {
+    NSString *username = self.usernameTextField.text;
+    NSString *password = self.passwordTextField.text;
+    [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * _Nullable user, NSError * _Nullable error) {
+        if (error != nil) {
+            NSString *errorMsg = @"There was an error logging you in. Please verify your username and password and check that you have a good network connection";
+            [[Alert new] showErrAlertOnView:self message:errorMsg title:@"Login In Error"];
+        } else {
+            [self performSegueWithIdentifier:@"SuccessfulAuth" sender:nil];
+        }
+    }];
 }
 
 -(void)viewStyling {

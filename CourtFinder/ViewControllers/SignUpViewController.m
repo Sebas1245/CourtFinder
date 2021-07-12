@@ -6,6 +6,8 @@
 //
 
 #import "SignUpViewController.h"
+#import "Alert.h"
+#import <Parse/Parse.h>
 
 @interface SignUpViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
@@ -27,5 +29,20 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (IBAction)handleSignup:(id)sender {
+    PFUser *newUser = [PFUser user];
+    newUser.email = self.emailTextField.text;
+    newUser.username = self.usernameTextField.text;
+    newUser.password = self.passwordTextField.text;
+    newUser[@"phone"] = self.phoneTextField.text;
+    [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (error != nil) {
+            NSString *errorMsg = [NSString stringWithFormat:@"There was an error performing signup: %@", error.localizedDescription ];
+            [[Alert new] showErrAlertOnView:self message:errorMsg title:@"Sign Up Error"];
+        } else {
+            [self performSegueWithIdentifier:@"SuccessfulSignin" sender:nil];
+        }
+    }];
+}
 
 @end
