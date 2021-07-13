@@ -6,11 +6,12 @@
 //
 
 #import "ViewController.h"
+#import <CoreLocation/CoreLocation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CourtsViewController : ViewController
-
+@interface CourtsViewController : ViewController <CLLocationManagerDelegate>
+@property (strong,nonatomic) CLLocationManager *locationManager;
 @end
 
 NS_ASSUME_NONNULL_END

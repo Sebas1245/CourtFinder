@@ -9,8 +9,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "CourtCell.h"
 
-@interface CourtsViewController () <CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource>
-@property (strong,nonatomic) CLLocationManager *locationManager;
+@interface CourtsViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *courtsTableView;
 @end
 
@@ -20,13 +19,27 @@
     [super viewDidLoad];
     self.locationManager = [CLLocationManager new];
     self.locationManager.delegate = self;
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [self.locationManager requestAlwaysAuthorization];
     self.courtsTableView.delegate = self;
     self.courtsTableView.dataSource = self;
 }
 
 - (void)locationManagerDidChangeAuthorization:(CLLocationManager *)manager {
-    NSLog(@"Accepted always use location permission");
+    if([manager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
+        NSLog(@"User still thinking about it");
+    } else if ([manager authorizationStatus] == kCLAuthorizationStatusDenied) {
+        NSLog(@"User opted out of location tracking");
+    } else {
+        [manager startUpdatingLocation];
+    }
+   
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    CLLocation *lastLocation = [locations lastObject];
+    NSLog(@"lat %f - long %f", lastLocation.coordinate.latitude, lastLocation.coordinate.longitude);
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
