@@ -261,6 +261,7 @@
 				794F7188269CBB8700529339 /* Frameworks */,
 				794F7189269CBB8700529339 /* Resources */,
 				AB402DB17CDDD5708BFE0DDE /* [CP] Embed Pods Frameworks */,
+				E3A3833CCE196408DD3818D8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -299,6 +300,7 @@
 				794F71AE269CBB8800529339 /* Frameworks */,
 				794F71AF269CBB8800529339 /* Resources */,
 				2DCC1D0A170741F3F1CEAD34 /* [CP] Embed Pods Frameworks */,
+				C1BAD38453518485BC1CE69B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -477,6 +479,40 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CourtFinder/Pods-CourtFinder-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C1BAD38453518485BC1CE69B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CourtFinder-CourtFinderUITests/Pods-CourtFinder-CourtFinderUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CourtFinder-CourtFinderUITests/Pods-CourtFinder-CourtFinderUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CourtFinder-CourtFinderUITests/Pods-CourtFinder-CourtFinderUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E3A3833CCE196408DD3818D8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CourtFinder/Pods-CourtFinder-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CourtFinder/Pods-CourtFinder-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CourtFinder/Pods-CourtFinder-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

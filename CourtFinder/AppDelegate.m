@@ -7,6 +7,7 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
+@import GooglePlaces;
 
 @interface AppDelegate ()
 
@@ -22,6 +23,7 @@
         configuration.server = @"https://parseapi.back4app.com";
     }];
     [Parse initializeWithConfiguration:parseConfig];
+    [GMSPlacesClient provideAPIKey:@"AIzaSyDulKwf5yAA5noc_qcyoUA06MmF5OtPntQ"];
     return YES;
 }
 

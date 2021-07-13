@@ -9,7 +9,7 @@ target 'CourtFinder' do
   pod 'Parse'
   pod 'LoremIpsum'
   pod 'AFNetworking'
-
+  pod 'GooglePlaces'
   target 'CourtFinderTests' do
     inherit! :search_paths
     # Pods for testing

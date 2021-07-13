@@ -66,7 +66,7 @@ CLLocation *previousLastLocation;
             NSLog(@"Error fetching data from Google Maps API: @%@", error.localizedDescription);
         } else {
             // load data into table view
-            NSLog(@"Found courts: %@", foundCourts);
+            NSLog(@"Found courts");
         }
     }];
 }

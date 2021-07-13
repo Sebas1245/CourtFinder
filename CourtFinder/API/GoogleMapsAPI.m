@@ -26,9 +26,41 @@ static NSString *const APIKey = @"AIzaSyDulKwf5yAA5noc_qcyoUA06MmF5OtPntQ";
         } else {
             NSDictionary *requestJSONResults = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             NSArray *results = requestJSONResults[@"results"];
+            for (int i = 0; i < results.count; i++) {
+                NSLog(@"Index %d", i);
+                NSLog(@"Name: %@", results[i][@"name"]);
+                NSLog(@"rating: %@", results[i][@"rating"]);
+                NSString *placeId = results[i][@"place_id"];
+                NSLog(@"placeID: %@", placeId);
+                GMSPlaceField fields = (GMSPlaceFieldPhotos | GMSPlaceFieldFormattedAddress);
+                [[GMSPlacesClient sharedClient] fetchPlaceFromPlaceID:placeId placeFields:fields sessionToken:nil
+                callback:^(GMSPlace * _Nullable place, NSError * _Nullable error) {
+                                    if(error != nil) {
+                                        NSLog(@"An error ocurred: %@", error.localizedDescription);
+                                        completion(error,nil);
+                                    } else {
+                                        NSLog(@"Formatted address: %@", [place formattedAddress]);
+                                        unsigned long numberOfPlacePhotos = [[place photos] count];
+                                        if(numberOfPlacePhotos != 0) {
+                                            for (int photoIndex = 0; photoIndex < numberOfPlacePhotos; photoIndex++) {
+                                                GMSPlacePhotoMetadata *photoMetadata = [place photos][photoIndex];
+                                                [[GMSPlacesClient sharedClient] loadPlacePhoto:photoMetadata
+                                                callback:^(UIImage * _Nullable photo, NSError * _Nullable error) {
+                                                    if (error != nil) {
+                                                        completion(error,nil);
+                                                    } else {
+                                                        NSLog(@"photo %d %@", photoIndex, photo);
+                                                    }
+                                                }];
+                                            }
+                                        }
+                                    }
+                }];
+            }
             completion(nil, results);
         }
     }];
     [task resume];
 }
+
 @end
