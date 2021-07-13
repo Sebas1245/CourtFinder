@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Court Finder needs to always know your location for the app to show the parks nearest to you and get a headcount on players in a certain park.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Court Finder needs to always know your location for the app to show the parks nearest to you and get a headcount on players in a certain park.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
