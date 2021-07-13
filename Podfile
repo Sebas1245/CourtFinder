@@ -8,6 +8,7 @@ target 'CourtFinder' do
   # Pods for CourtFinder
   pod 'Parse'
   pod 'LoremIpsum'
+  pod 'AFNetworking'
 
   target 'CourtFinderTests' do
     inherit! :search_paths

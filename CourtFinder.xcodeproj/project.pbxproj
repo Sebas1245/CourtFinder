@@ -24,6 +24,8 @@
 		79F77870269D0D58000814E4 /* CourtsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F7786F269D0D58000814E4 /* CourtsViewController.m */; };
 		79F77873269DE71F000814E4 /* SettingsScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F77872269DE71F000814E4 /* SettingsScreenViewController.m */; };
 		79F77876269DF061000814E4 /* CourtCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F77875269DF061000814E4 /* CourtCell.m */; };
+		79F77879269E14FF000814E4 /* Courts.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F77878269E14FF000814E4 /* Courts.m */; };
+		79F7787E269E2EFE000814E4 /* GoogleMapsAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F7787D269E2EFE000814E4 /* GoogleMapsAPI.m */; };
 		B90D590D03219CCEFAEF5BEF /* Pods_CourtFinder_CourtFinderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 398DBE597A37800C84D92D94 /* Pods_CourtFinder_CourtFinderUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +83,10 @@
 		79F77872269DE71F000814E4 /* SettingsScreenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsScreenViewController.m; sourceTree = "<group>"; };
 		79F77874269DF061000814E4 /* CourtCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourtCell.h; sourceTree = "<group>"; };
 		79F77875269DF061000814E4 /* CourtCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourtCell.m; sourceTree = "<group>"; };
+		79F77877269E14FF000814E4 /* Courts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Courts.h; sourceTree = "<group>"; };
+		79F77878269E14FF000814E4 /* Courts.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Courts.m; sourceTree = "<group>"; };
+		79F7787C269E2EFE000814E4 /* GoogleMapsAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoogleMapsAPI.h; sourceTree = "<group>"; };
+		79F7787D269E2EFE000814E4 /* GoogleMapsAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoogleMapsAPI.m; sourceTree = "<group>"; };
 		A1A88E80A9C537756766ABE0 /* Pods-CourtFinder-CourtFinderUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourtFinder-CourtFinderUITests.release.xcconfig"; path = "Target Support Files/Pods-CourtFinder-CourtFinderUITests/Pods-CourtFinder-CourtFinderUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DA3F0E07CA8370EA00FC7492 /* Pods-CourtFinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourtFinder.debug.xcconfig"; path = "Target Support Files/Pods-CourtFinder/Pods-CourtFinder.debug.xcconfig"; sourceTree = "<group>"; };
 		FF9FC4D691A99536F733CA5E /* Pods-CourtFinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourtFinder.release.xcconfig"; path = "Target Support Files/Pods-CourtFinder/Pods-CourtFinder.release.xcconfig"; sourceTree = "<group>"; };
@@ -149,6 +155,7 @@
 		794F718D269CBB8700529339 /* CourtFinder */ = {
 			isa = PBXGroup;
 			children = (
+				79F7787B269E2EE0000814E4 /* API */,
 				79F77861269CC3ED000814E4 /* Views */,
 				79F77860269CC3E4000814E4 /* Models */,
 				79F7785F269CC3D5000814E4 /* ViewControllers */,
@@ -205,6 +212,8 @@
 			children = (
 				79F7786B269CDF29000814E4 /* Alert.h */,
 				79F7786C269CDF29000814E4 /* Alert.m */,
+				79F77877269E14FF000814E4 /* Courts.h */,
+				79F77878269E14FF000814E4 /* Courts.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -216,6 +225,15 @@
 				79F77875269DF061000814E4 /* CourtCell.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		79F7787B269E2EE0000814E4 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				79F7787C269E2EFE000814E4 /* GoogleMapsAPI.h */,
+				79F7787D269E2EFE000814E4 /* GoogleMapsAPI.m */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		AD07D18693E601AF1CC5EB21 /* Pods */ = {
@@ -468,11 +486,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79F77879269E14FF000814E4 /* Courts.m in Sources */,
 				79F77870269D0D58000814E4 /* CourtsViewController.m in Sources */,
 				794F7196269CBB8700529339 /* ViewController.m in Sources */,
 				794F7190269CBB8700529339 /* AppDelegate.m in Sources */,
 				79F77876269DF061000814E4 /* CourtCell.m in Sources */,
 				79F77873269DE71F000814E4 /* SettingsScreenViewController.m in Sources */,
+				79F7787E269E2EFE000814E4 /* GoogleMapsAPI.m in Sources */,
 				79F7786D269CDF29000814E4 /* Alert.m in Sources */,
 				79F77867269CC418000814E4 /* SignUpViewController.m in Sources */,
 				794F71A1269CBB8800529339 /* main.m in Sources */,

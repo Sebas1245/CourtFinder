@@ -8,12 +8,14 @@
 #import "CourtsViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import "CourtCell.h"
+#import "GoogleMapsAPI.h"
 
 @interface CourtsViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *courtsTableView;
 @end
 
 @implementation CourtsViewController
+CLLocation *previousLastLocation;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,24 +34,43 @@
     } else if ([manager authorizationStatus] == kCLAuthorizationStatusDenied) {
         NSLog(@"User opted out of location tracking");
     } else {
-        [manager startUpdatingLocation];
+        [manager startMonitoringSignificantLocationChanges];
     }
    
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
     CLLocation *lastLocation = [locations lastObject];
-    NSLog(@"lat %f - long %f", lastLocation.coordinate.latitude, lastLocation.coordinate.longitude);
+    if(![locations isEqual:previousLastLocation]) {
+        NSLog(@"Location changed lat %f - long %f", lastLocation.coordinate.latitude, lastLocation.coordinate.longitude);
+        [self loadAPIData];
+    } else {
+        previousLastLocation = lastLocation;
+        NSLog(@"Location still at lat %f - long %f", lastLocation.coordinate.latitude, lastLocation.coordinate.longitude);
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CourtCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CourtCell"];
     return cell;
 }
+
+-(void) loadAPIData {
+    [GoogleMapsAPI searchNearbyCourts:self.locationManager.location searchRadius:5000 completion:^(NSError * _Nonnull error, NSArray * _Nonnull foundCourts) {
+        if (error != nil) {
+            // show an alert
+            NSLog(@"Error fetching data from Google Maps API: @%@", error.localizedDescription);
+        } else {
+            // load data into table view
+            NSLog(@"Found courts: %@", foundCourts);
+        }
+    }];
+}
+
 /*
 #pragma mark - Navigation
 

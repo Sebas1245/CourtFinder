@@ -96,7 +96,7 @@ Users can view courts that are nearest to them and the app tells them if there i
 | phone | String | user's phone number |
 | headedToPark | String | Google Maps ID string that identifies the park the person is headed to (may be null in some rows) |
 | lastSetHeadedToPark | Date | Timestamp for last time the user clicked on OMW button (may be null in some rows) |
-#### Parks 
+#### Courts 
 NOTE: This model will not exist on Parse DB. This is designed to facilitate the manipulation of data retrieved from Google Maps API. 
 | Property | Type | Description |
 | -------- | ---- | ----------- |
