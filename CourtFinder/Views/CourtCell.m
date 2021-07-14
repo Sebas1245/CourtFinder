@@ -18,5 +18,9 @@
     [super setSelected:selected animated:animated];
     // Configure the view for the selected state
 }
-
+-(void)setCourt:(Court *)court{
+    _court = court;
+    NSLog(@"Name: %@", self.court.name);
+    NSLog(@"Address: %@", self.court.address);
+}
 @end

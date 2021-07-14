@@ -6,16 +6,20 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Courts : NSObject
+@interface Court : NSObject
 @property (nonatomic, strong) NSString *placeID;
+@property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *address;
-@property (nonatomic) float rating;
+@property (nonatomic, strong) NSNumber* rating;
 @property (nonatomic) float distanceFromUser;
 @property (nonatomic) int players;
-@property (nonatomic, strong) NSArray *photos;
+@property (nonatomic, strong) NSMutableArray *photos;
+@property (nonatomic, strong) CLLocation *location;
+-(instancetype)initWithDictionary:(NSDictionary*)dictionary;
 @end
 
 NS_ASSUME_NONNULL_END

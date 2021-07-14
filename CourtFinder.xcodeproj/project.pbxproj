@@ -24,7 +24,7 @@
 		79F77870269D0D58000814E4 /* CourtsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F7786F269D0D58000814E4 /* CourtsViewController.m */; };
 		79F77873269DE71F000814E4 /* SettingsScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F77872269DE71F000814E4 /* SettingsScreenViewController.m */; };
 		79F77876269DF061000814E4 /* CourtCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F77875269DF061000814E4 /* CourtCell.m */; };
-		79F77879269E14FF000814E4 /* Courts.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F77878269E14FF000814E4 /* Courts.m */; };
+		79F77879269E14FF000814E4 /* Court.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F77878269E14FF000814E4 /* Court.m */; };
 		79F7787E269E2EFE000814E4 /* GoogleMapsAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F7787D269E2EFE000814E4 /* GoogleMapsAPI.m */; };
 		B90D590D03219CCEFAEF5BEF /* Pods_CourtFinder_CourtFinderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 398DBE597A37800C84D92D94 /* Pods_CourtFinder_CourtFinderUITests.framework */; };
 /* End PBXBuildFile section */
@@ -83,8 +83,8 @@
 		79F77872269DE71F000814E4 /* SettingsScreenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsScreenViewController.m; sourceTree = "<group>"; };
 		79F77874269DF061000814E4 /* CourtCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourtCell.h; sourceTree = "<group>"; };
 		79F77875269DF061000814E4 /* CourtCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourtCell.m; sourceTree = "<group>"; };
-		79F77877269E14FF000814E4 /* Courts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Courts.h; sourceTree = "<group>"; };
-		79F77878269E14FF000814E4 /* Courts.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Courts.m; sourceTree = "<group>"; };
+		79F77877269E14FF000814E4 /* Court.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Court.h; sourceTree = "<group>"; };
+		79F77878269E14FF000814E4 /* Court.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Court.m; sourceTree = "<group>"; };
 		79F7787C269E2EFE000814E4 /* GoogleMapsAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoogleMapsAPI.h; sourceTree = "<group>"; };
 		79F7787D269E2EFE000814E4 /* GoogleMapsAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoogleMapsAPI.m; sourceTree = "<group>"; };
 		A1A88E80A9C537756766ABE0 /* Pods-CourtFinder-CourtFinderUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourtFinder-CourtFinderUITests.release.xcconfig"; path = "Target Support Files/Pods-CourtFinder-CourtFinderUITests/Pods-CourtFinder-CourtFinderUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -212,8 +212,8 @@
 			children = (
 				79F7786B269CDF29000814E4 /* Alert.h */,
 				79F7786C269CDF29000814E4 /* Alert.m */,
-				79F77877269E14FF000814E4 /* Courts.h */,
-				79F77878269E14FF000814E4 /* Courts.m */,
+				79F77877269E14FF000814E4 /* Court.h */,
+				79F77878269E14FF000814E4 /* Court.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -522,7 +522,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79F77879269E14FF000814E4 /* Courts.m in Sources */,
+				79F77879269E14FF000814E4 /* Court.m in Sources */,
 				79F77870269D0D58000814E4 /* CourtsViewController.m in Sources */,
 				794F7196269CBB8700529339 /* ViewController.m in Sources */,
 				794F7190269CBB8700529339 /* AppDelegate.m in Sources */,

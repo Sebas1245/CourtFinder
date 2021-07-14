@@ -12,6 +12,7 @@
 
 @interface CourtsViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *courtsTableView;
+@property (strong, nonatomic) NSMutableArray<Court*> *courts;
 @end
 
 @implementation CourtsViewController
@@ -19,6 +20,7 @@ CLLocation *previousLastLocation;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.courts = [NSMutableArray new];
     self.locationManager = [CLLocationManager new];
     self.locationManager.delegate = self;
     self.locationManager.distanceFilter = kCLDistanceFilterNone;
@@ -43,7 +45,16 @@ CLLocation *previousLastLocation;
     CLLocation *lastLocation = [locations lastObject];
     if(![locations isEqual:previousLastLocation]) {
         NSLog(@"Location changed lat %f - long %f", lastLocation.coordinate.latitude, lastLocation.coordinate.longitude);
-        [self loadAPIData];
+        [self loadAPIDataWithCompletion:^(NSError *error, BOOL success) {
+            if (success) {
+                [self.courtsTableView reloadData];
+                NSLog(@"Reloading table data with array values=%@", self.courts);
+            } else {
+                // alert error
+                NSString *errorMsg =  [NSString stringWithFormat:@"Error fetching Google Maps Data: %@",error.localizedDescription];
+                NSLog(@"%@", errorMsg);
+            }
+        }];
     } else {
         previousLastLocation = lastLocation;
         NSLog(@"Location still at lat %f - long %f", lastLocation.coordinate.latitude, lastLocation.coordinate.longitude);
@@ -51,22 +62,53 @@ CLLocation *previousLastLocation;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.courts.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CourtCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CourtCell"];
+    Court *court = self.courts[indexPath.row];
+    cell.court = court;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
--(void) loadAPIData {
-    [GoogleMapsAPI searchNearbyCourts:self.locationManager.location searchRadius:5000 completion:^(NSError * _Nonnull error, NSArray * _Nonnull foundCourts) {
+-(void)loadAPIDataWithCompletion:(void(^)(NSError *error, BOOL success))completion {
+    [GoogleMapsAPI searchNearbyCourts:self.locationManager.location searchRadius:5000 completion:^(NSError * _Nonnull error, NSArray<Court*> * searchResults) {
         if (error != nil) {
-            // show an alert
             NSLog(@"Error fetching data from Google Maps API: @%@", error.localizedDescription);
+            completion(error, false);
         } else {
             // load data into table view
-            NSLog(@"Found courts");
+            [GoogleMapsAPI getDetailsForEachCourt:searchResults completion:^(NSError * _Nonnull error, NSArray<Court *> * _Nonnull foundCourts) {
+                for (int i = 0; i < foundCourts.count; i++) {
+                    Court *foundCourt = foundCourts[i];
+                    [GoogleMapsAPI getAddressForCourt:foundCourt.placeID completion:^(NSError * _Nonnull error, NSString * _Nonnull address) {
+                        if (error != nil) {
+                            NSLog(@"Error getting address %@", error.localizedDescription);
+                            completion(error, false);
+                        } else {
+                            [foundCourt setAddress:address];
+                            NSLog(@"%@", foundCourt.placeID);
+                            NSLog(@"%@", foundCourt.name);
+                            NSLog(@"%@", foundCourt.address);
+                            NSLog(@"%@", foundCourt.rating);
+                            [GoogleMapsAPI getCourtPhotos:foundCourt.placeID completion:^(NSError * _Nonnull error, NSArray * _Nonnull photos) {
+                                if (error != nil) {
+                                    NSLog(@"Error getting court photos");
+                                    completion(error, false);
+                                } else {
+                                    [foundCourt.photos setArray:photos];
+                                    [self.courts addObject:foundCourt];
+                                    completion(nil, true);
+                                }
+                            }];
+                        }
+                    }];
+                }
+                
+            }];
+            
         }
     }];
 }
