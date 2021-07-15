@@ -21,6 +21,7 @@ CLLocation *previousLastLocation;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"Table view loading");
     self.courts = [NSMutableArray new];
     self.locationManager = [CLLocationManager new];
     self.locationManager.delegate = self;
@@ -92,7 +93,7 @@ CLLocation *previousLastLocation;
 }
 
 -(void)loadAPIDetails:(NSArray<Court*> *)searchResults completion:(void(^)(NSError *error, BOOL success))completion {
-    [GoogleMapsAPI getDetailsForEachCourt:searchResults completion:^(NSError * _Nonnull error, NSArray<Court *> * _Nonnull foundCourts) {
+    [GoogleMapsAPI getDetailsForEachCourt:searchResults userLocation:self.locationManager.location completion:^(NSError * _Nonnull error, NSArray<Court *> * _Nonnull foundCourts) {
         dispatch_group_t addressRequestGroup = dispatch_group_create();
         dispatch_group_t photoRequestGroup = dispatch_group_create();
         for (Court *foundCourt in foundCourts) {

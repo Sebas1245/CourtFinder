@@ -33,14 +33,19 @@ static NSString *const APIKey = @"AIzaSyDulKwf5yAA5noc_qcyoUA06MmF5OtPntQ";
     [task resume];
 }
 
-+(void)getDetailsForEachCourt:(NSArray*)results completion: (void(^)(NSError* error, NSArray<Court*> *foundCourts))completion {
++(void)getDetailsForEachCourt:(NSArray*)results userLocation:(CLLocation *)userLocation completion: (void(^)(NSError* error, NSArray<Court*> *foundCourts))completion {
     NSMutableArray *foundCourts = [NSMutableArray new];
     for (int i = 0; i < results.count; i++) {
         NSMutableDictionary *courtDetails = [[NSMutableDictionary alloc] init];
         NSString *placeId = results[i][@"place_id"];
+        NSNumber *placeLat = results[i][@"geometry"][@"location"][@"lat"];
+        NSNumber *placeLng = results[i][@"geometry"][@"location"][@"lng"];
+        CLLocation *placeLocation = [[CLLocation alloc] initWithLatitude:placeLat.doubleValue longitude:placeLng.doubleValue];
         [courtDetails setValue:placeId forKey:@"placeID"];
         [courtDetails setValue:results[i][@"name"] forKey:@"name"];
         [courtDetails setValue:results[i][@"rating"] forKey:@"rating"];
+        [courtDetails setValue:placeLocation forKey:@"location"];
+        [courtDetails setValue:userLocation forKey:@"userLocation"];
         Court *newCourt = [[Court alloc] initWithDictionary:courtDetails];
         [foundCourts addObject:newCourt];
     }

@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GoogleMapsAPI : NSObject
 +(void)searchNearbyCourts:(CLLocation*) location searchRadius:(int) radius completion:(void(^)(NSError* error, NSArray *searchResults))completion;
-+(void)getDetailsForEachCourt:(NSArray*)results completion: (void(^)(NSError* error, NSArray<Court*> *foundCourts))completion;
++(void)getDetailsForEachCourt:(NSArray*)results userLocation:(CLLocation *)userLocation completion: (void(^)(NSError* error, NSArray<Court*> *foundCourts))completion;
 +(void)getAddressForCourt:(NSString *)placeID completion:(void(^)(NSError* error, NSString *address))completion;
 +(void)getMainCourtPhoto:(NSString*)placeID completion:(void(^)(NSError* error, UIImage *photo))completion;
 +(void)getOnePhotoWithMetadata:(GMSPlacePhotoMetadata *)photoMetadata completion:(void(^)(NSError *error, UIImage *photo))completion;

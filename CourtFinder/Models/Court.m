@@ -15,6 +15,9 @@
         self.placeID = dictionary[@"placeID"];
         self.name = dictionary[@"name"];
         self.rating = dictionary[@"rating"];
+        self.location = dictionary[@"location"];
+        CLLocation *currentUserLocation = dictionary[@"userLocation"];
+        self.distanceFromUser = [self.location distanceFromLocation:currentUserLocation];
     }
     return self;
 }
