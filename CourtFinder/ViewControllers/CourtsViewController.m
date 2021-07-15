@@ -9,6 +9,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "CourtCell.h"
 #import "GoogleMapsAPI.h"
+#import "Alert.h"
 
 @interface CourtsViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *courtsTableView;
@@ -52,7 +53,7 @@ CLLocation *previousLastLocation;
             } else {
                 // alert error
                 NSString *errorMsg =  [NSString stringWithFormat:@"Error fetching Google Maps Data: %@",error.localizedDescription];
-                NSLog(@"%@", errorMsg);
+                [[Alert new] showErrAlertOnView:self message:errorMsg title:@"Google Maps Error"];
             }
         }];
     } else {
@@ -79,42 +80,52 @@ CLLocation *previousLastLocation;
             NSLog(@"Error fetching data from Google Maps API: @%@", error.localizedDescription);
             completion(error, false);
         } else {
-            [GoogleMapsAPI getDetailsForEachCourt:searchResults completion:^(NSError * _Nonnull error, NSArray<Court *> * _Nonnull foundCourts) {
-                dispatch_group_t addressRequestGroup = dispatch_group_create();
-                dispatch_group_t photoRequestGroup = dispatch_group_create();
-                for (Court *foundCourt in foundCourts) {
-                    dispatch_group_enter(addressRequestGroup);
-                    [GoogleMapsAPI getAddressForCourt:foundCourt.placeID completion:^(NSError * _Nonnull error, NSString * _Nonnull address) {
-                        if (error != nil) {
-                            completion(error, false);
-                        } else {
-                            [foundCourt setAddress:address];
-                            NSLog(@"Leaving addressRequestGroup");
-                            dispatch_group_leave(addressRequestGroup);
-                        }
-                    }];
-                    dispatch_group_enter(photoRequestGroup);
-                    [GoogleMapsAPI getMainCourtPhoto:foundCourt.placeID completion:^(NSError * _Nonnull error, UIImage * _Nonnull photo) {
-                        if (error != nil) {
-                            completion(error, false);
-                        } else {
-                            [foundCourt setMainPhoto:photo];
-                            dispatch_group_leave(photoRequestGroup);
-                            NSLog(@"Leaving photoRequestGroup");
-                        }
-                    }];
-                    NSLog(@"Inserting aobject to self.courts");
-                    [self.courts addObject:foundCourt];
+            [self loadAPIDetails:searchResults completion:^(NSError *error, BOOL success) {
+                if (error != nil) {
+                    completion(error, false);
+                } else {
+                    completion(nil, true);
                 }
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                    dispatch_group_wait(addressRequestGroup, DISPATCH_TIME_FOREVER);
-                    dispatch_group_wait(photoRequestGroup, DISPATCH_TIME_FOREVER);
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        completion(nil,true);
-                    });
-                });
             }];
         }
+    }];
+}
+
+-(void)loadAPIDetails:(NSArray<Court*> *)searchResults completion:(void(^)(NSError *error, BOOL success))completion {
+    [GoogleMapsAPI getDetailsForEachCourt:searchResults completion:^(NSError * _Nonnull error, NSArray<Court *> * _Nonnull foundCourts) {
+        dispatch_group_t addressRequestGroup = dispatch_group_create();
+        dispatch_group_t photoRequestGroup = dispatch_group_create();
+        for (Court *foundCourt in foundCourts) {
+            dispatch_group_enter(addressRequestGroup);
+            [GoogleMapsAPI getAddressForCourt:foundCourt.placeID completion:^(NSError * _Nonnull error, NSString * _Nonnull address) {
+                if (error != nil) {
+                    completion(error, false);
+                } else {
+                    [foundCourt setAddress:address];
+                    NSLog(@"Leaving addressRequestGroup");
+                    dispatch_group_leave(addressRequestGroup);
+                }
+            }];
+            dispatch_group_enter(photoRequestGroup);
+            [GoogleMapsAPI getMainCourtPhoto:foundCourt.placeID completion:^(NSError * _Nonnull error, UIImage * _Nonnull photo) {
+                if (error != nil) {
+                    completion(error, false);
+                } else {
+                    [foundCourt setMainPhoto:photo];
+                    dispatch_group_leave(photoRequestGroup);
+                    NSLog(@"Leaving photoRequestGroup");
+                }
+            }];
+            NSLog(@"Inserting aobject to self.courts");
+            [self.courts addObject:foundCourt];
+        }
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            dispatch_group_wait(addressRequestGroup, DISPATCH_TIME_FOREVER);
+            dispatch_group_wait(photoRequestGroup, DISPATCH_TIME_FOREVER);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(nil,true);
+            });
+        });
     }];
 }
 
