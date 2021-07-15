@@ -48,7 +48,6 @@ CLLocation *previousLastLocation;
         [self loadAPIDataWithCompletion:^(NSError *error, BOOL success) {
             if (success) {
                 [self.courtsTableView reloadData];
-                NSLog(@"Reloading table data with array values=%@", self.courts);
             } else {
                 // alert error
                 NSString *errorMsg =  [NSString stringWithFormat:@"Error fetching Google Maps Data: %@",error.localizedDescription];
@@ -89,16 +88,11 @@ CLLocation *previousLastLocation;
                             completion(error, false);
                         } else {
                             [foundCourt setAddress:address];
-                            NSLog(@"%@", foundCourt.placeID);
-                            NSLog(@"%@", foundCourt.name);
-                            NSLog(@"%@", foundCourt.address);
-                            NSLog(@"%@", foundCourt.rating);
-                            [GoogleMapsAPI getCourtPhotos:foundCourt.placeID completion:^(NSError * _Nonnull error, NSArray * _Nonnull photos) {
+                            [GoogleMapsAPI getMainCourtPhoto:foundCourt.placeID completion:^(NSError * _Nonnull error, UIImage * _Nonnull photo) {
                                 if (error != nil) {
-                                    NSLog(@"Error getting court photos");
-                                    completion(error, false);
+                                    completion(error, nil);
                                 } else {
-                                    [foundCourt.photos setArray:photos];
+                                    [foundCourt setMainPhoto:photo];
                                     [self.courts addObject:foundCourt];
                                     completion(nil, true);
                                 }

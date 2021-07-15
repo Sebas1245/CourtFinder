@@ -357,6 +357,13 @@
                                                 <constraint firstItem="RpF-rA-7ST" firstAttribute="centerY" secondItem="NJz-GE-mFV" secondAttribute="centerY" id="wxG-5R-vw7"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cellAddressLabel" destination="u05-69-bsp" id="xue-jj-Dng"/>
+                                            <outlet property="cellDistanceLabel" destination="HGB-gz-FYH" id="2Qb-TS-FuF"/>
+                                            <outlet property="cellImageView" destination="7LA-vK-pBD" id="jDU-0R-fQr"/>
+                                            <outlet property="cellNameLabel" destination="J7M-5Q-F9n" id="kQS-ee-phY"/>
+                                            <outlet property="cellUserCountLabel" destination="LHo-GQ-Hgx" id="fVQ-X8-A1d"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

@@ -20,7 +20,8 @@
 }
 -(void)setCourt:(Court *)court{
     _court = court;
-    NSLog(@"Name: %@", self.court.name);
-    NSLog(@"Address: %@", self.court.address);
+    self.cellNameLabel.text = self.court.name;
+    self.cellAddressLabel.text = self.court.address;
+    [self.cellImageView setImage:self.court.mainPhoto];
 }
 @end

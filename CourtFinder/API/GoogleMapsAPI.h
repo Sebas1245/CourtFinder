@@ -16,8 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 +(void)searchNearbyCourts:(CLLocation*) location searchRadius:(int) radius completion:(void(^)(NSError* error, NSArray *searchResults))completion;
 +(void)getDetailsForEachCourt:(NSArray*)results completion: (void(^)(NSError* error, NSArray<Court*> *foundCourts))completion;
 +(void)getAddressForCourt:(NSString *)placeID completion:(void(^)(NSError* error, NSString *address))completion;
-+(void)getCourtPhotos:(NSString*)placeID completion:(void(^)(NSError* error, NSArray *photos))completion;
-+(UIImage * _Nullable)getOnePhotoWithMetadata:(GMSPlacePhotoMetadata *)photoMetadata;
++(void)getMainCourtPhoto:(NSString*)placeID completion:(void(^)(NSError* error, UIImage *photo))completion;
++(void)getOnePhotoWithMetadata:(GMSPlacePhotoMetadata *)photoMetadata completion:(void(^)(NSError *error, UIImage *photo))completion;
 @end
 
 NS_ASSUME_NONNULL_END

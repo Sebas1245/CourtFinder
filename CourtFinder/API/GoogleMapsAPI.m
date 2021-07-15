@@ -47,7 +47,7 @@ static NSString *const APIKey = @"AIzaSyDulKwf5yAA5noc_qcyoUA06MmF5OtPntQ";
     completion(nil, foundCourts);
 }
 
-+(void)getAddressForCourt:(NSString *)placeID completion:(void(^)(NSError* error, NSString *address))completion{
++(void)getAddressForCourt:(NSString *)placeID completion:(void(^)(NSError* error, NSString *address))completion {
     GMSPlaceField fields = (GMSPlaceFieldFormattedAddress);
     [[GMSPlacesClient sharedClient] fetchPlaceFromPlaceID:placeID placeFields:fields sessionToken:nil
         callback:^(GMSPlace * _Nullable place, NSError * _Nullable error) {
@@ -60,7 +60,7 @@ static NSString *const APIKey = @"AIzaSyDulKwf5yAA5noc_qcyoUA06MmF5OtPntQ";
     }];
 }
 
-+(void)getCourtPhotos:(NSString*)placeID completion:(void(^)(NSError* error, NSArray *photos))completion{
++(void)getMainCourtPhoto:(NSString*)placeID completion:(void(^)(NSError* error, UIImage *photo))completion {
     GMSPlaceField fields = (GMSPlaceFieldPhotos);
     [[GMSPlacesClient sharedClient] fetchPlaceFromPlaceID:placeID placeFields:fields sessionToken:nil
         callback:^(GMSPlace * _Nullable place, NSError * _Nullable error) {
@@ -69,35 +69,34 @@ static NSString *const APIKey = @"AIzaSyDulKwf5yAA5noc_qcyoUA06MmF5OtPntQ";
                 NSLog(@"An error ocurred: %@", error.localizedDescription);
                 completion(error, nil);
             } else {
-                NSMutableArray *photos;
                 unsigned long numberOfPlacePhotos = [[place photos] count];
+                NSLog(@"Place photos count=%lu", (unsigned long)[[place photos] count]);
                 if (numberOfPlacePhotos == 0) {
-                    [photos addObject:[UIImage imageNamed:@"no_image_available"]];
-                    completion(nil, photos);
+                    completion(nil, [UIImage imageNamed:@"no_image_available"]);
                 } else {
-                    for (int photoIndex = 0; photoIndex < numberOfPlacePhotos; photoIndex++) {
-                        GMSPlacePhotoMetadata *photoMetadata = [place photos][photoIndex];
-                        UIImage *photo = [self getOnePhotoWithMetadata:photoMetadata];
-                        [photos addObject:photo];
-                    }
-                    completion(nil, photos);
+                    GMSPlacePhotoMetadata *photoMetadata = [place photos][0];
+                    [self getOnePhotoWithMetadata:photoMetadata completion:^(NSError *error, UIImage *photo) {
+                        if (error != nil) {
+                            completion(error, nil);
+                        } else {
+                            NSLog(@"Getting back photo=%@", photo);
+                            completion(nil, photo);
+                        }
+                    }];
                 }
-                
             }
     }];
 }
 
-+(UIImage * _Nullable)getOnePhotoWithMetadata:(GMSPlacePhotoMetadata *)photoMetadata {
-    __block UIImage *returnedImage;
++(void)getOnePhotoWithMetadata:(GMSPlacePhotoMetadata *)photoMetadata completion:(void(^)(NSError *error, UIImage *photo))completion {
     [[GMSPlacesClient sharedClient] loadPlacePhoto:photoMetadata callback:^(UIImage * _Nullable photo, NSError * _Nullable error) {
         if (error != nil) {
             NSLog(@"Error getting photo with metadata %@", error.localizedDescription);
-            returnedImage = nil;
+            completion(error, nil);
         } else {
-            returnedImage = photo;
+            completion(nil, photo);
         }
     }];
-    return returnedImage;
 }
 
 @end

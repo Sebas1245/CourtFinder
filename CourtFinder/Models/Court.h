@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -14,10 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *placeID;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *address;
-@property (nonatomic, strong) NSNumber* rating;
+@property (nonatomic, strong) NSNumber *rating;
 @property (nonatomic) float distanceFromUser;
 @property (nonatomic) int players;
-@property (nonatomic, strong) NSMutableArray *photos;
+@property (nonatomic, strong) UIImage *mainPhoto;
+@property (nonatomic, strong) NSMutableArray *otherPhotos;
 @property (nonatomic, strong) CLLocation *location;
 -(instancetype)initWithDictionary:(NSDictionary*)dictionary;
 @end
