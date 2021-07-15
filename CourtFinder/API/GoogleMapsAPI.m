@@ -70,7 +70,6 @@ static NSString *const APIKey = @"AIzaSyDulKwf5yAA5noc_qcyoUA06MmF5OtPntQ";
                 completion(error, nil);
             } else {
                 unsigned long numberOfPlacePhotos = [[place photos] count];
-                NSLog(@"Place photos count=%lu", (unsigned long)[[place photos] count]);
                 if (numberOfPlacePhotos == 0) {
                     completion(nil, [UIImage imageNamed:@"no_image_available"]);
                 } else {
@@ -79,7 +78,6 @@ static NSString *const APIKey = @"AIzaSyDulKwf5yAA5noc_qcyoUA06MmF5OtPntQ";
                         if (error != nil) {
                             completion(error, nil);
                         } else {
-                            NSLog(@"Getting back photo=%@", photo);
                             completion(nil, photo);
                         }
                     }];
