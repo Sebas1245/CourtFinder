@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		098728FBD1351E33B8FFA261 /* Pods_CourtFinderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D667A277B6EB1F5A1C206B6 /* Pods_CourtFinderTests.framework */; };
 		1DEF4A24B1CA0861A5A76D60 /* Pods_CourtFinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B7FA35AA86CE0F27B0C58E4 /* Pods_CourtFinder.framework */; };
+		791EB27E26A2350A00344C20 /* CourtDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791EB27D26A2350A00344C20 /* CourtDetailViewController.m */; };
 		794F7190269CBB8700529339 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F718F269CBB8700529339 /* AppDelegate.m */; };
 		794F7193269CBB8700529339 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F7192269CBB8700529339 /* SceneDelegate.m */; };
 		794F7196269CBB8700529339 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F7195269CBB8700529339 /* ViewController.m */; };
@@ -53,6 +54,8 @@
 		50F90708AFEC24C9279329DE /* Pods-CourtFinderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourtFinderTests.debug.xcconfig"; path = "Target Support Files/Pods-CourtFinderTests/Pods-CourtFinderTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5B7FA35AA86CE0F27B0C58E4 /* Pods_CourtFinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CourtFinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D667A277B6EB1F5A1C206B6 /* Pods_CourtFinderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CourtFinderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		791EB27C26A2350A00344C20 /* CourtDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourtDetailViewController.h; sourceTree = "<group>"; };
+		791EB27D26A2350A00344C20 /* CourtDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourtDetailViewController.m; sourceTree = "<group>"; };
 		794F718B269CBB8700529339 /* CourtFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CourtFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		794F718E269CBB8700529339 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		794F718F269CBB8700529339 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -203,6 +206,8 @@
 				79F7786F269D0D58000814E4 /* CourtsViewController.m */,
 				79F77871269DE71F000814E4 /* SettingsScreenViewController.h */,
 				79F77872269DE71F000814E4 /* SettingsScreenViewController.m */,
+				791EB27C26A2350A00344C20 /* CourtDetailViewController.h */,
+				791EB27D26A2350A00344C20 /* CourtDetailViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -528,6 +533,7 @@
 				794F7190269CBB8700529339 /* AppDelegate.m in Sources */,
 				79F77876269DF061000814E4 /* CourtCell.m in Sources */,
 				79F77873269DE71F000814E4 /* SettingsScreenViewController.m in Sources */,
+				791EB27E26A2350A00344C20 /* CourtDetailViewController.m in Sources */,
 				79F7787E269E2EFE000814E4 /* GoogleMapsAPI.m in Sources */,
 				79F7786D269CDF29000814E4 /* Alert.m in Sources */,
 				79F77867269CC418000814E4 /* SignUpViewController.m in Sources */,

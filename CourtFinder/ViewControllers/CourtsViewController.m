@@ -10,6 +10,7 @@
 #import "CourtCell.h"
 #import "GoogleMapsAPI.h"
 #import "Alert.h"
+#import "CourtDetailViewController.h"
 
 @interface CourtsViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *courtsTableView;
@@ -126,14 +127,19 @@ CLLocation *previousLastLocation;
     }];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    UITableViewCell *tappedCell = sender;
+    NSIndexPath *indexPath = [self.courtsTableView indexPathForCell:tappedCell];
+    Court *selectedCourt = self.courts[indexPath.row];
+    CourtDetailViewController *courtDetailVC = [segue destinationViewController];
+    courtDetailVC.court = selectedCourt;
 }
-*/
+
 
 @end
