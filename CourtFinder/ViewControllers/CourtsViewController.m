@@ -49,7 +49,6 @@ CLLocation *previousLastLocation;
         NSLog(@"Location changed lat %f - long %f", lastLocation.coordinate.latitude, lastLocation.coordinate.longitude);
         [self loadAPIDataWithCompletion:^(NSError *error, BOOL success) {
             if (success) {
-                NSLog(@"Reloaded table data");
                 [self.courtsTableView reloadData];
             } else {
                 // alert error
@@ -103,7 +102,6 @@ CLLocation *previousLastLocation;
                     completion(error, false);
                 } else {
                     [foundCourt setAddress:address];
-                    NSLog(@"Leaving addressRequestGroup");
                     dispatch_group_leave(addressRequestGroup);
                 }
             }];
@@ -114,10 +112,8 @@ CLLocation *previousLastLocation;
                 } else {
                     [foundCourt setMainPhoto:photo];
                     dispatch_group_leave(photoRequestGroup);
-                    NSLog(@"Leaving photoRequestGroup");
                 }
             }];
-            NSLog(@"Inserting aobject to self.courts");
             [self.courts addObject:foundCourt];
         }
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
