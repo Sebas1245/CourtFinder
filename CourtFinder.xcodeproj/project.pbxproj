@@ -19,6 +19,7 @@
 		794F71A1269CBB8800529339 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F71A0269CBB8800529339 /* main.m */; };
 		794F71AB269CBB8800529339 /* CourtFinderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F71AA269CBB8800529339 /* CourtFinderTests.m */; };
 		794F71B6269CBB8800529339 /* CourtFinderUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F71B5269CBB8800529339 /* CourtFinderUITests.m */; };
+		7986493026A611B10047D60E /* Formatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7986492F26A611B10047D60E /* Formatter.m */; };
 		79F77864269CC40A000814E4 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F77863269CC40A000814E4 /* LoginViewController.m */; };
 		79F77867269CC418000814E4 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F77866269CC418000814E4 /* SignUpViewController.m */; };
 		79F7786D269CDF29000814E4 /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F7786C269CDF29000814E4 /* Alert.m */; };
@@ -74,6 +75,8 @@
 		794F71B1269CBB8800529339 /* CourtFinderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CourtFinderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		794F71B5269CBB8800529339 /* CourtFinderUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourtFinderUITests.m; sourceTree = "<group>"; };
 		794F71B7269CBB8800529339 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7986492E26A611B10047D60E /* Formatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Formatter.h; sourceTree = "<group>"; };
+		7986492F26A611B10047D60E /* Formatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Formatter.m; sourceTree = "<group>"; };
 		79F77862269CC40A000814E4 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		79F77863269CC40A000814E4 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		79F77865269CC418000814E4 /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
@@ -158,6 +161,7 @@
 		794F718D269CBB8700529339 /* CourtFinder */ = {
 			isa = PBXGroup;
 			children = (
+				7986492D26A611920047D60E /* Misc */,
 				79F7787B269E2EE0000814E4 /* API */,
 				79F77861269CC3ED000814E4 /* Views */,
 				79F77860269CC3E4000814E4 /* Models */,
@@ -195,6 +199,17 @@
 			path = CourtFinderUITests;
 			sourceTree = "<group>";
 		};
+		7986492D26A611920047D60E /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				79F7786B269CDF29000814E4 /* Alert.h */,
+				79F7786C269CDF29000814E4 /* Alert.m */,
+				7986492E26A611B10047D60E /* Formatter.h */,
+				7986492F26A611B10047D60E /* Formatter.m */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
 		79F7785F269CC3D5000814E4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,8 +230,6 @@
 		79F77860269CC3E4000814E4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				79F7786B269CDF29000814E4 /* Alert.h */,
-				79F7786C269CDF29000814E4 /* Alert.m */,
 				79F77877269E14FF000814E4 /* Court.h */,
 				79F77878269E14FF000814E4 /* Court.m */,
 			);
@@ -531,6 +544,7 @@
 				79F77870269D0D58000814E4 /* CourtsViewController.m in Sources */,
 				794F7196269CBB8700529339 /* ViewController.m in Sources */,
 				794F7190269CBB8700529339 /* AppDelegate.m in Sources */,
+				7986493026A611B10047D60E /* Formatter.m in Sources */,
 				79F77876269DF061000814E4 /* CourtCell.m in Sources */,
 				79F77873269DE71F000814E4 /* SettingsScreenViewController.m in Sources */,
 				791EB27E26A2350A00344C20 /* CourtDetailViewController.m in Sources */,
