@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 +(void)getDetailsForEachCourt:(NSArray*)results userLocation:(CLLocation *)userLocation completion: (void(^)(NSError* error, NSArray<Court*> *foundCourts))completion;
 +(void)getAddressForCourt:(NSString *)placeID completion:(void(^)(NSError* error, NSString *address))completion;
 +(void)getMainCourtPhoto:(NSString*)placeID completion:(void(^)(NSError* error, UIImage *photo))completion;
++(void)getAllPhotosForCourt:(NSString*)placeID completion:(void(^)(NSError *error, NSArray<UIImage *> *photos))completion;
 +(void)getOnePhotoWithMetadata:(GMSPlacePhotoMetadata *)photoMetadata completion:(void(^)(NSError *error, UIImage *photo))completion;
 @end
 

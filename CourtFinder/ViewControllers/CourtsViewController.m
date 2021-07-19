@@ -107,11 +107,12 @@ CLLocation *previousLastLocation;
                 }
             }];
             dispatch_group_enter(photoRequestGroup);
-            [GoogleMapsAPI getMainCourtPhoto:foundCourt.placeID completion:^(NSError * _Nonnull error, UIImage * _Nonnull photo) {
+            [GoogleMapsAPI getAllPhotosForCourt:foundCourt.placeID completion:^(NSError * _Nonnull error, NSArray<UIImage *> * _Nonnull photos) {
                 if (error != nil) {
                     completion(error, false);
                 } else {
-                    [foundCourt setMainPhoto:photo];
+                    foundCourt.otherPhotos = photos;
+                    [foundCourt setMainPhoto:foundCourt.otherPhotos[0]];
                     dispatch_group_leave(photoRequestGroup);
                 }
             }];
@@ -127,13 +128,9 @@ CLLocation *previousLastLocation;
     }];
 }
 
-
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
     UITableViewCell *tappedCell = sender;
     NSIndexPath *indexPath = [self.courtsTableView indexPathForCell:tappedCell];
     Court *selectedCourt = self.courts[indexPath.row];

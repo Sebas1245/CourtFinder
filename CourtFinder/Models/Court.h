@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) float distanceFromUser;
 @property (nonatomic) int players;
 @property (nonatomic, strong) UIImage *mainPhoto;
-@property (nonatomic, strong) NSMutableArray *otherPhotos;
+@property (nonatomic, strong) NSArray<UIImage *> *otherPhotos;
 @property (nonatomic, strong) CLLocation *location;
 -(instancetype)initWithDictionary:(NSDictionary*)dictionary;
 @end

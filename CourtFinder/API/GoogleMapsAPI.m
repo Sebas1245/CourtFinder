@@ -91,6 +91,43 @@ static NSString *const APIKey = @"AIzaSyDulKwf5yAA5noc_qcyoUA06MmF5OtPntQ";
     }];
 }
 
++(void)getAllPhotosForCourt:(NSString*)placeID completion:(void(^)(NSError *error, NSArray<UIImage *> *photos))completion {
+    GMSPlaceField fields = (GMSPlaceFieldPhotos);
+    [[GMSPlacesClient sharedClient] fetchPlaceFromPlaceID:placeID placeFields:fields sessionToken:nil
+        callback:^(GMSPlace * _Nullable place, NSError * _Nullable error) {
+        if (error != nil) {
+            completion(error, nil);
+        } else {
+            unsigned long numberOfPlacePhotos = [[place photos] count];
+            NSMutableArray *fetchedPhotos = [NSMutableArray new];
+            if (numberOfPlacePhotos == 0) {
+                [fetchedPhotos addObject:[UIImage imageNamed:@"no_image_available"]];
+                completion(nil, fetchedPhotos);
+            } else {
+                dispatch_group_t photoRequestGroup = dispatch_group_create();
+                NSArray *placePhotosMetadata = [place photos];
+                for (GMSPlacePhotoMetadata *photoMetadata in placePhotosMetadata) {
+                    dispatch_group_enter(photoRequestGroup);
+                    [self getOnePhotoWithMetadata:photoMetadata completion:^(NSError * _Nonnull error, UIImage * _Nonnull photo) {
+                        if (error != nil) {
+                            completion(error, nil);
+                        } else {
+                            [fetchedPhotos addObject:photo];
+                            dispatch_group_leave(photoRequestGroup);
+                        }
+                    }];
+                }
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                    dispatch_group_wait(photoRequestGroup, DISPATCH_TIME_FOREVER);
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        completion(nil,fetchedPhotos);
+                    });
+                });
+            }
+        }
+    }];
+}
+
 +(void)getOnePhotoWithMetadata:(GMSPlacePhotoMetadata *)photoMetadata completion:(void(^)(NSError *error, UIImage *photo))completion {
     [[GMSPlacesClient sharedClient] loadPlacePhoto:photoMetadata callback:^(UIImage * _Nullable photo, NSError * _Nullable error) {
         if (error != nil) {

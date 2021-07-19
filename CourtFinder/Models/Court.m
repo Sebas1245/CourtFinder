@@ -18,6 +18,7 @@
         self.location = dictionary[@"location"];
         CLLocation *currentUserLocation = dictionary[@"userLocation"];
         self.distanceFromUser = [self.location distanceFromLocation:currentUserLocation];
+        self.otherPhotos = [NSArray new];
     }
     return self;
 }
