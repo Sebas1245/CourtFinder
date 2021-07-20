@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *detailParkLabel;
 @property (weak, nonatomic) IBOutlet UILabel *detailUserCountLabel;
 @property (weak, nonatomic) IBOutlet UIButton *detailOMWButton;
+@property (weak, nonatomic) IBOutlet UIPageControl *detailImagesPageControl;
 @end
 
 @implementation CourtDetailViewController
@@ -32,20 +33,34 @@ int imageBeingDisplayed = 0;
     self.detailParkLabel.text = self.court.name;
     self.detailRatingLabel.text = [Formatter formattedRating:self.court.rating];
     self.detailAddressLabel.text = self.court.address;
+    self.detailImagesPageControl.numberOfPages = self.court.otherPhotos.count;
 }
 
 - (IBAction)swipeLeftOnPhoto:(id)sender {
     if (imageBeingDisplayed < self.court.otherPhotos.count - 1) {
         imageBeingDisplayed++;
-        self.detailImageView.image = self.court.otherPhotos[imageBeingDisplayed];
+        [self reflectImageChange];
     }
 }
 
 - (IBAction)swipeRightOnPhoto:(id)sender {
     if (imageBeingDisplayed > 0) {
         imageBeingDisplayed--;
-        self.detailImageView.image = self.court.otherPhotos[imageBeingDisplayed];
+        [self reflectImageChange];
     }
+}
+
+- (IBAction)tappedPageDots:(id)sender {
+    UIPageControl *pageControl = sender;
+    imageBeingDisplayed = (int)pageControl.currentPage;
+    NSLog(@"imageBDisp=%lu pageControl.currentPage%d", pageControl.currentPage, imageBeingDisplayed);
+    [self reflectImageChange];
+}
+
+
+-(void)reflectImageChange {
+    self.detailImageView.image = self.court.otherPhotos[imageBeingDisplayed];
+    self.detailImagesPageControl.currentPage = imageBeingDisplayed;
 }
 
 - (IBAction)tappedOnMyWayBtn:(id)sender {

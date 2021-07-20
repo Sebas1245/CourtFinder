@@ -363,7 +363,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle.badge.checkmark.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="RpF-rA-7ST">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle.fill.badge.checkmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="RpF-rA-7ST">
                                                     <rect key="frame" x="205" y="104.5" width="31.5" height="27"/>
                                                     <color key="tintColor" red="1" green="0.48596674203872681" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
@@ -507,7 +507,7 @@
                                                     <action selector="tappedOnMyWayBtn:" destination="cCE-xp-5oB" eventType="touchUpInside" id="ebp-iy-Mnr"/>
                                                 </connections>
                                             </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle.badge.checkmark.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ZFR-xj-uEJ">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle.fill.badge.checkmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ZFR-xj-uEJ">
                                                 <rect key="frame" x="19.5" y="537" width="22" height="19.5"/>
                                                 <color key="tintColor" red="1" green="0.48596674200000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </imageView>
@@ -525,6 +525,12 @@
                                                     <segue destination="5f9-4x-1t3" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="CZk-fz-s7H"/>
                                                 </connections>
                                             </button>
+                                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="gBa-wX-hFD">
+                                                <rect key="frame" x="146.5" y="289" width="121.5" height="28"/>
+                                                <connections>
+                                                    <action selector="tappedPageDots:" destination="cCE-xp-5oB" eventType="valueChanged" id="tHL-gP-xwu"/>
+                                                </connections>
+                                            </pageControl>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -539,6 +545,7 @@
                                             <constraint firstItem="hpN-vL-CtC" firstAttribute="width" secondItem="ikv-o4-Kte" secondAttribute="width" multiplier="0.370321" id="GSH-Td-J3y"/>
                                             <constraint firstItem="KGN-aS-yo9" firstAttribute="centerY" secondItem="k5p-9L-LRB" secondAttribute="centerY" id="GuE-wP-0ar"/>
                                             <constraint firstItem="MUb-br-UxB" firstAttribute="centerY" secondItem="k5p-9L-LRB" secondAttribute="centerY" id="IjK-Gv-eL8"/>
+                                            <constraint firstItem="gBa-wX-hFD" firstAttribute="centerX" secondItem="b8I-hc-dRe" secondAttribute="centerX" id="JmH-sI-fmF"/>
                                             <constraint firstItem="ikv-o4-Kte" firstAttribute="top" secondItem="k5p-9L-LRB" secondAttribute="bottom" constant="30" id="Rj3-0S-94S"/>
                                             <constraint firstItem="pCc-hI-7Im" firstAttribute="top" secondItem="b8I-hc-dRe" secondAttribute="top" id="S1A-8p-ORx"/>
                                             <constraint firstItem="4cD-fs-Bzz" firstAttribute="centerY" secondItem="k5p-9L-LRB" secondAttribute="centerY" id="Sfb-Ng-9mo"/>
@@ -554,6 +561,7 @@
                                             <constraint firstAttribute="trailing" secondItem="pCc-hI-7Im" secondAttribute="trailing" id="m6t-ED-it6"/>
                                             <constraint firstItem="4cD-fs-Bzz" firstAttribute="trailing" secondItem="MWk-iB-QSC" secondAttribute="trailing" id="oNq-T0-rDa"/>
                                             <constraint firstItem="ikv-o4-Kte" firstAttribute="trailing" secondItem="MWk-iB-QSC" secondAttribute="trailing" id="p8O-qe-pOk"/>
+                                            <constraint firstItem="MWk-iB-QSC" firstAttribute="top" secondItem="gBa-wX-hFD" secondAttribute="bottom" constant="30" id="pm0-di-35f"/>
                                             <constraint firstItem="ikv-o4-Kte" firstAttribute="leading" secondItem="MWk-iB-QSC" secondAttribute="leading" id="sH1-oQ-Mhl"/>
                                             <constraint firstItem="k5p-9L-LRB" firstAttribute="leading" secondItem="MWk-iB-QSC" secondAttribute="leading" id="u1Q-Y4-KWp"/>
                                             <constraint firstItem="hpN-vL-CtC" firstAttribute="centerY" secondItem="ZFR-xj-uEJ" secondAttribute="centerY" id="wLP-5K-iUo"/>
@@ -587,6 +595,7 @@
                         <outlet property="detailAddressLabel" destination="ikv-o4-Kte" id="hzt-9C-ql9"/>
                         <outlet property="detailDistanceLabel" destination="4cD-fs-Bzz" id="KnG-9d-aw2"/>
                         <outlet property="detailImageView" destination="pCc-hI-7Im" id="ttA-O9-0cS"/>
+                        <outlet property="detailImagesPageControl" destination="gBa-wX-hFD" id="Xdn-JS-7nd"/>
                         <outlet property="detailOMWButton" destination="hpN-vL-CtC" id="EWP-C1-Umr"/>
                         <outlet property="detailParkLabel" destination="MWk-iB-QSC" id="D5J-do-bes"/>
                         <outlet property="detailRatingLabel" destination="MUb-br-UxB" id="fos-H0-fCk"/>
@@ -652,7 +661,7 @@
         <image name="bolt.fill" catalog="system" width="101" height="128"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="location.fill.viewfinder" catalog="system" width="128" height="115"/>
-        <image name="person.crop.circle.badge.checkmark.fill" catalog="system" width="128" height="113"/>
+        <image name="person.crop.circle.fill.badge.checkmark" catalog="system" width="128" height="113"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <image name="viewfinder" catalog="system" width="128" height="115"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
