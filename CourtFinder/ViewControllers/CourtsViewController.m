@@ -11,6 +11,7 @@
 #import "GoogleMapsAPI.h"
 #import "Alert.h"
 #import "CourtDetailViewController.h"
+#import <Parse/Parse.h>
 
 @interface CourtsViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *courtsTableView;
@@ -56,6 +57,7 @@ CLLocation *previousLastLocation;
                 [[Alert new] showErrAlertOnView:self message:errorMsg title:@"Google Maps Error"];
             }
         }];
+        [self updateUserLocation];
     } else {
         previousLastLocation = lastLocation;
         NSLog(@"Location still at lat %f - long %f", lastLocation.coordinate.latitude, lastLocation.coordinate.longitude);
@@ -125,6 +127,24 @@ CLLocation *previousLastLocation;
             });
         });
     }];
+}
+
+- (void)updateUserLocation {
+    PFUser *currentUser = [PFUser currentUser];
+    if (currentUser) {
+        PFGeoPoint *lastLocation = [PFGeoPoint new];
+        lastLocation.latitude = self.locationManager.location.coordinate.latitude;
+        lastLocation.longitude = self.locationManager.location.coordinate.longitude;
+        currentUser[@"lastLocation"] = lastLocation;
+        [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if (error != nil) {
+                NSString *errorMsg = [NSString stringWithFormat:@"Error updating location in database: %@", error.localizedDescription];
+                [[Alert new] showErrAlertOnView:self message:errorMsg title:@"Internal server error"];
+            } else {
+                NSLog(@"Updated user location successfully");
+            }
+        }];
+    }
 }
 
 #pragma mark - Navigation
