@@ -10,6 +10,7 @@
 #import "Alert.h"
 #import "Formatter.h"
 #import <Parse/Parse.h>
+#import "FullScreenImagesViewController.h"
 
 @interface CourtDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *detailImageView;
@@ -55,7 +56,7 @@ int imageBeingDisplayed = 0;
     }
 }
 
--(void)updateHeadedToPark:(NSString *)headedToPark timestamp:(NSDate *)now selectedState:(BOOL) selectedState{
+- (void)updateHeadedToPark:(NSString *)headedToPark timestamp:(NSDate *)now selectedState:(BOOL) selectedState{
     PFUser *currentUser = [PFUser currentUser];
     if (currentUser) {
         currentUser[@"headedToPark"] = headedToPark;
@@ -76,6 +77,13 @@ int imageBeingDisplayed = 0;
             }
         }];
     }
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    FullScreenImagesViewController *fullScreenImagesVC = [segue destinationViewController];
+    fullScreenImagesVC.photos = self.court.otherPhotos;
 }
 
 @end

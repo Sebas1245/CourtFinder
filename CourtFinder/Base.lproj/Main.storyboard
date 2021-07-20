@@ -237,6 +237,43 @@
             </objects>
             <point key="canvasLocation" x="934.78260869565224" y="87.723214285714278"/>
         </scene>
+        <!--Full Screen Images View Controller-->
+        <scene sceneID="DrY-Mc-Jnt">
+            <objects>
+                <viewController id="5f9-4x-1t3" customClass="FullScreenImagesViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MeL-g6-oad">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mnr-zG-8TR">
+                                <rect key="frame" x="10" y="44" width="34" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="34" id="1AL-4K-WND"/>
+                                    <constraint firstAttribute="height" constant="34" id="lTb-Fg-mxB"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="0.48596674200000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="xmark.circle.fill" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="handleClose:" destination="5f9-4x-1t3" eventType="touchUpInside" id="zHw-4d-Vb9"/>
+                                    <action selector="handleCloseButton:" destination="gIL-3h-zMa" eventType="touchUpInside" id="eW0-tE-PZw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0Bk-DL-neN"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mnr-zG-8TR" firstAttribute="top" secondItem="0Bk-DL-neN" secondAttribute="top" id="96d-VH-bPJ"/>
+                            <constraint firstItem="mnr-zG-8TR" firstAttribute="leading" secondItem="0Bk-DL-neN" secondAttribute="leading" constant="10" id="dmC-On-ypM"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="cd0-hx-hkG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QHZ-mR-lQy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2666.666666666667" y="1534.8214285714284"/>
+        </scene>
         <!--Settings-->
         <scene sceneID="Kbg-96-skd">
             <objects>
@@ -265,7 +302,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="th3-ut-cZ2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2666.666666666667" y="1534.8214285714284"/>
+            <point key="canvasLocation" x="3681" y="1535"/>
         </scene>
         <!--Courts View Controller-->
         <scene sceneID="f8p-yz-zuo">
@@ -474,14 +511,30 @@
                                                 <rect key="frame" x="19.5" y="537" width="22" height="19.5"/>
                                                 <color key="tintColor" red="1" green="0.48596674200000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cxe-l6-4bn">
+                                                <rect key="frame" x="8" y="8" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="i8J-7d-DDY"/>
+                                                    <constraint firstAttribute="width" constant="30" id="s7B-tq-AOM"/>
+                                                </constraints>
+                                                <color key="tintColor" red="0.1370993257" green="0.1097415164" blue="0.11372556540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <state key="normal">
+                                                    <imageReference key="image" image="viewfinder" catalog="system" symbolScale="large"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="5f9-4x-1t3" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="CZk-fz-s7H"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="d2k-5c-I4e" firstAttribute="leading" secondItem="ZFR-xj-uEJ" secondAttribute="trailing" constant="5" id="3RZ-tY-gN4"/>
                                             <constraint firstAttribute="trailing" secondItem="MWk-iB-QSC" secondAttribute="trailing" constant="20" id="4C2-fa-APC"/>
+                                            <constraint firstItem="Cxe-l6-4bn" firstAttribute="leading" secondItem="b8I-hc-dRe" secondAttribute="leading" constant="8" id="4rp-V9-wtP"/>
                                             <constraint firstItem="pCc-hI-7Im" firstAttribute="height" secondItem="b8I-hc-dRe" secondAttribute="height" multiplier="0.437241" id="9ay-qa-zD8"/>
                                             <constraint firstItem="MUb-br-UxB" firstAttribute="leading" secondItem="k5p-9L-LRB" secondAttribute="trailing" constant="5" id="A8T-wh-181"/>
                                             <constraint firstItem="MWk-iB-QSC" firstAttribute="leading" secondItem="b8I-hc-dRe" secondAttribute="leading" constant="20" id="Agt-Lv-JFa"/>
+                                            <constraint firstItem="Cxe-l6-4bn" firstAttribute="top" secondItem="b8I-hc-dRe" secondAttribute="top" constant="8" id="C1u-yq-j9B"/>
                                             <constraint firstItem="pCc-hI-7Im" firstAttribute="leading" secondItem="b8I-hc-dRe" secondAttribute="leading" id="EtL-fO-OOC"/>
                                             <constraint firstItem="hpN-vL-CtC" firstAttribute="width" secondItem="ikv-o4-Kte" secondAttribute="width" multiplier="0.370321" id="GSH-Td-J3y"/>
                                             <constraint firstItem="KGN-aS-yo9" firstAttribute="centerY" secondItem="k5p-9L-LRB" secondAttribute="centerY" id="GuE-wP-0ar"/>
@@ -593,7 +646,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="l7Y-hE-am8"/>
+        <segue reference="P4i-qQ-2Qn"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bolt.fill" catalog="system" width="101" height="128"/>
@@ -601,6 +654,7 @@
         <image name="location.fill.viewfinder" catalog="system" width="128" height="115"/>
         <image name="person.crop.circle.badge.checkmark.fill" catalog="system" width="128" height="113"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
+        <image name="viewfinder" catalog="system" width="128" height="115"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
