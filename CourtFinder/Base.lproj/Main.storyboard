@@ -517,7 +517,7 @@
                                                     <constraint firstAttribute="height" constant="30" id="i8J-7d-DDY"/>
                                                     <constraint firstAttribute="width" constant="30" id="s7B-tq-AOM"/>
                                                 </constraints>
-                                                <color key="tintColor" red="0.1370993257" green="0.1097415164" blue="0.11372556540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal">
                                                     <imageReference key="image" image="viewfinder" catalog="system" symbolScale="large"/>
                                                 </state>

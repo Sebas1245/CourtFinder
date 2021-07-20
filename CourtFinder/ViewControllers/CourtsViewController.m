@@ -52,7 +52,6 @@ CLLocation *previousLastLocation;
             if (success) {
                 [self.courtsTableView reloadData];
             } else {
-                // alert error
                 NSString *errorMsg =  [NSString stringWithFormat:@"Error fetching Google Maps Data: %@",error.localizedDescription];
                 [[Alert new] showErrAlertOnView:self message:errorMsg title:@"Google Maps Error"];
             }
@@ -75,7 +74,7 @@ CLLocation *previousLastLocation;
     return cell;
 }
 
--(void)loadAPIDataWithCompletion:(void(^)(NSError *error, BOOL success))completion {
+- (void)loadAPIDataWithCompletion:(void(^)(NSError *error, BOOL success))completion {
     [GoogleMapsAPI searchNearbyCourts:self.locationManager.location searchRadius:5000 completion:^(NSError * _Nonnull error, NSArray<Court*> * searchResults) {
         if (error != nil) {
             NSLog(@"Error fetching data from Google Maps API: @%@", error.localizedDescription);
@@ -92,7 +91,7 @@ CLLocation *previousLastLocation;
     }];
 }
 
--(void)loadAPIDetails:(NSArray<Court*> *)searchResults completion:(void(^)(NSError *error, BOOL success))completion {
+- (void)loadAPIDetails:(NSArray<Court*> *)searchResults completion:(void(^)(NSError *error, BOOL success))completion {
     [GoogleMapsAPI getDetailsForEachCourt:searchResults userLocation:self.locationManager.location completion:^(NSError * _Nonnull error, NSArray<Court *> * _Nonnull foundCourts) {
         dispatch_group_t addressRequestGroup = dispatch_group_create();
         dispatch_group_t photoRequestGroup = dispatch_group_create();
@@ -137,6 +136,4 @@ CLLocation *previousLastLocation;
     CourtDetailViewController *courtDetailVC = [segue destinationViewController];
     courtDetailVC.court = selectedCourt;
 }
-
-
 @end

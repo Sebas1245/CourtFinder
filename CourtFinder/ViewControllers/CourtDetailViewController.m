@@ -53,37 +53,33 @@ int imageBeingDisplayed = 0;
 - (IBAction)tappedPageDots:(id)sender {
     UIPageControl *pageControl = sender;
     imageBeingDisplayed = (int)pageControl.currentPage;
-    NSLog(@"imageBDisp=%lu pageControl.currentPage%d", pageControl.currentPage, imageBeingDisplayed);
     [self reflectImageChange];
 }
 
 
--(void)reflectImageChange {
+- (void)reflectImageChange {
     self.detailImageView.image = self.court.otherPhotos[imageBeingDisplayed];
     self.detailImagesPageControl.currentPage = imageBeingDisplayed;
 }
 
 - (IBAction)tappedOnMyWayBtn:(id)sender {
-    if ([self.detailOMWButton isSelected]) {
-        [self updateHeadedToPark:@"" timestamp:nil selectedState:false];
-    } else {
-        [self updateHeadedToPark:self.court.placeID timestamp:[NSDate now] selectedState:true];
-    }
+    NSString *headedToPark = [self.detailOMWButton isSelected] ? @"" : self.court.placeID;
+    [self updateHeadedToPark:headedToPark];
 }
 
-- (void)updateHeadedToPark:(NSString *)headedToPark timestamp:(NSDate *)now selectedState:(BOOL) selectedState{
+- (void)updateHeadedToPark:(NSString *)headedToPark {
     PFUser *currentUser = [PFUser currentUser];
     if (currentUser) {
         currentUser[@"headedToPark"] = headedToPark;
-        currentUser[@"lastSetHeadedToPark"] = now == nil ? [NSNull new] : now;
+        currentUser[@"lastSetHeadedToPark"] = [NSDate date];
         [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (error != nil) {
                 NSString * errMsg = [NSString stringWithFormat:@"Error saving opt in to park: %@", error.localizedDescription];
                 [[Alert new] showErrAlertOnView:self message:errMsg title:@"Internal server error"];
             } else {
                 NSString *successMsg;
-                [self.detailOMWButton setSelected:selectedState];
-                if (selectedState) {
+                [self.detailOMWButton setSelected:![self.detailOMWButton isSelected]];
+                if (![headedToPark isEqual:@""]) {
                     successMsg = @"You will now be considered for this park's headcount. Please arrive during the next 15 minutes or you will be removed from the headcount";
                 } else {
                     successMsg = @"You have now been removed from the park's headcount";
@@ -100,5 +96,4 @@ int imageBeingDisplayed = 0;
     FullScreenImagesViewController *fullScreenImagesVC = [segue destinationViewController];
     fullScreenImagesVC.photos = self.court.otherPhotos;
 }
-
 @end

@@ -11,8 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Formatter : NSObject
-+(NSString *)formattedDistance:(float)distanceFromUser;
-+(NSString *)formattedRating:(NSNumber *)rating;
++ (NSString *)formattedDistance:(float)distanceFromUser;
++ (NSString *)formattedRating:(NSNumber *)rating;
 @end
 
 NS_ASSUME_NONNULL_END

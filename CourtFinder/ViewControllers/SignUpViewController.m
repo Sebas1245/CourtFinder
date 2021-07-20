@@ -19,7 +19,6 @@
 @end
 
 @implementation SignUpViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.signupButton.layer.cornerRadius = 15.0f;
@@ -44,5 +43,4 @@
         }
     }];
 }
-
 @end

@@ -24,7 +24,6 @@
     [self setupScrollViewImages];
     self.fullScreenSV.backgroundColor = [UIColor blackColor];
     self.fullScreenSV.contentSize = CGSizeMake(self.viewWidth * self.photos.count, self.viewHeight);
-    self.fullScreenSV.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.fullScreenSV];
 }
 

@@ -18,7 +18,6 @@
 @end
 
 @implementation LoginViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self viewStyling];
@@ -41,5 +40,4 @@
     self.loginButton.layer.cornerRadius = 15.0f;
     self.signupButton.layer.cornerRadius = 15.0f;
 }
-
 @end

@@ -11,8 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Alert : NSObject
--(void)showErrAlertOnView:(UIViewController*)viewController  message:(NSString*)message title:(NSString*)title;
--(void)showSuccessAlertOnView:(UIViewController*)viewController  message:(NSString*)message title:(NSString*)title;
+- (void)showErrAlertOnView:(UIViewController*)viewController  message:(NSString*)message title:(NSString*)title;
+- (void)showSuccessAlertOnView:(UIViewController*)viewController  message:(NSString*)message title:(NSString*)title;
 @end
 
 NS_ASSUME_NONNULL_END

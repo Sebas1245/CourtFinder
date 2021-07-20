@@ -9,7 +9,7 @@
 #import "GoogleMapsAPI.h"
 
 @implementation Court
--(instancetype)initWithDictionary:(NSDictionary*)dictionary {
+- (instancetype)initWithDictionary:(NSDictionary*)dictionary {
     self = [super init];
     if (self) {
         self.placeID = dictionary[@"placeID"];
@@ -22,5 +22,4 @@
     }
     return self;
 }
-
 @end

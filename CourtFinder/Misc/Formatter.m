@@ -8,7 +8,7 @@
 #import "Formatter.h"
 
 @implementation Formatter
-+(NSString *)formattedDistance:(float)distanceFromUser {
++ (NSString *)formattedDistance:(float)distanceFromUser {
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     [formatter setMaximumFractionDigits:2];
     [formatter setRoundingMode: NSNumberFormatterRoundDown];
@@ -23,7 +23,7 @@
     }
 }
 
-+(NSString *)formattedRating:(NSNumber *)rating {
++ (NSString *)formattedRating:(NSNumber *)rating {
     if (rating == nil) {
         return @"No rating available";
     } else {
