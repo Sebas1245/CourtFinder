@@ -10,11 +10,16 @@
 @implementation Alert
 -(void)showErrAlertOnView:(UIViewController*)viewController  message:(NSString*)message title:(NSString*)title {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:(UIAlertControllerStyleAlert)];
-    // create an OK action
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Try again" style:UIAlertActionStyleDefault handler:nil];
-    // add the OK action to the alert controller
     [alert addAction:okAction];
-    // show alert
     [viewController presentViewController:alert animated:true completion:nil];
 }
+
+-(void)showSuccessAlertOnView:(UIViewController*)viewController  message:(NSString*)message title:(NSString*)title {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    [alert addAction:okAction];
+    [viewController presentViewController:alert animated:true completion:nil];
+}
+
 @end
