@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CourtDetailViewController : ViewController
-@property (weak, nonatomic) Court *court;
+@property (strong, nonatomic) Court *court;
 @end
 
 NS_ASSUME_NONNULL_END
