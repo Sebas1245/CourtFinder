@@ -13,7 +13,7 @@
 #import "CourtDetailViewController.h"
 #import <Parse/Parse.h>
 
-@interface CourtsViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface CourtsViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *courtsTableView;
 @property (strong, nonatomic) NSMutableArray<Court*> *courts;
 @end
@@ -23,45 +23,32 @@ CLLocation *previousLastLocation;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"Table view loading");
-    self.courts = [NSMutableArray new];
     self.locationManager = [CLLocationManager new];
     self.locationManager.delegate = self;
     self.locationManager.distanceFilter = kCLDistanceFilterNone;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [self.locationManager requestAlwaysAuthorization];
+    if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
+        [self.locationManager requestAlwaysAuthorization];
+    }
+    [self.locationManager startMonitoringSignificantLocationChanges];
     self.courtsTableView.delegate = self;
     self.courtsTableView.dataSource = self;
 }
 
-- (void)locationManagerDidChangeAuthorization:(CLLocationManager *)manager {
-    if([manager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
-        NSLog(@"User still thinking about it");
-    } else if ([manager authorizationStatus] == kCLAuthorizationStatusDenied) {
-        NSLog(@"User opted out of location tracking");
-    } else {
-        [manager startMonitoringSignificantLocationChanges];
-    }
-   
-}
-
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
     CLLocation *lastLocation = [locations lastObject];
-    if(![locations isEqual:previousLastLocation]) {
-        NSLog(@"Location changed lat %f - long %f", lastLocation.coordinate.latitude, lastLocation.coordinate.longitude);
-        [self loadAPIDataWithCompletion:^(NSError *error, BOOL success) {
-            if (success) {
-                [self.courtsTableView reloadData];
-            } else {
-                NSString *errorMsg =  [NSString stringWithFormat:@"Error fetching Google Maps Data: %@",error.localizedDescription];
-                [[Alert new] showErrAlertOnView:self message:errorMsg title:@"Google Maps Error"];
-            }
-        }];
-        [self updateUserLocation];
-    } else {
-        previousLastLocation = lastLocation;
-        NSLog(@"Location still at lat %f - long %f", lastLocation.coordinate.latitude, lastLocation.coordinate.longitude);
-    }
+    self.courts = [NSMutableArray new];
+    NSLog(@"Location changed lat %f - long %f", lastLocation.coordinate.latitude, lastLocation.coordinate.longitude);
+    [self loadAPIDataWithCompletion:^(NSError *error, BOOL success) {
+        if (success) {
+            NSLog(@"Successfully reloaded API data");
+            [self.courtsTableView reloadData];
+        } else {
+            NSString *errorMsg =  [NSString stringWithFormat:@"Error fetching Google Maps Data: %@",error.localizedDescription];
+            [[Alert new] showErrAlertOnView:self message:errorMsg title:@"Google Maps Error"];
+        }
+    }];
+    [self updateUserLocation];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -95,37 +82,37 @@ CLLocation *previousLastLocation;
 
 - (void)loadAPIDetails:(NSArray<Court*> *)searchResults completion:(void(^)(NSError *error, BOOL success))completion {
     [GoogleMapsAPI getDetailsForEachCourt:searchResults userLocation:self.locationManager.location completion:^(NSError * _Nonnull error, NSArray<Court *> * _Nonnull foundCourts) {
-        dispatch_group_t addressRequestGroup = dispatch_group_create();
-        dispatch_group_t photoRequestGroup = dispatch_group_create();
-        for (Court *foundCourt in foundCourts) {
-            dispatch_group_enter(addressRequestGroup);
-            [GoogleMapsAPI getAddressForCourt:foundCourt.placeID completion:^(NSError * _Nonnull error, NSString * _Nonnull address) {
-                if (error != nil) {
-                    completion(error, false);
-                } else {
-                    [foundCourt setAddress:address];
-                    dispatch_group_leave(addressRequestGroup);
-                }
-            }];
-            dispatch_group_enter(photoRequestGroup);
-            [GoogleMapsAPI getAllPhotosForCourt:foundCourt.placeID completion:^(NSError * _Nonnull error, NSArray<UIImage *> * _Nonnull photos) {
-                if (error != nil) {
-                    completion(error, false);
-                } else {
-                    foundCourt.otherPhotos = photos;
-                    [foundCourt setMainPhoto:foundCourt.otherPhotos[0]];
-                    dispatch_group_leave(photoRequestGroup);
-                }
-            }];
-            [self.courts addObject:foundCourt];
-        }
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            dispatch_group_wait(addressRequestGroup, DISPATCH_TIME_FOREVER);
-            dispatch_group_wait(photoRequestGroup, DISPATCH_TIME_FOREVER);
-            dispatch_async(dispatch_get_main_queue(), ^{
-                completion(nil,true);
+            dispatch_group_t addressRequestGroup = dispatch_group_create();
+            dispatch_group_t photoRequestGroup = dispatch_group_create();
+            for (Court *foundCourt in foundCourts) {
+                dispatch_group_enter(addressRequestGroup);
+                [GoogleMapsAPI getAddressForCourt:foundCourt.placeID completion:^(NSError * _Nonnull error, NSString * _Nonnull address) {
+                    if (error != nil) {
+                        completion(error, false);
+                    } else {
+                        [foundCourt setAddress:address];
+                        dispatch_group_leave(addressRequestGroup);
+                    }
+                }];
+                dispatch_group_enter(photoRequestGroup);
+                [GoogleMapsAPI getAllPhotosForCourt:foundCourt.placeID completion:^(NSError * _Nonnull error, NSArray<UIImage *> * _Nonnull photos) {
+                    if (error != nil) {
+                        completion(error, false);
+                    } else {
+                        foundCourt.otherPhotos = photos;
+                        [foundCourt setMainPhoto:foundCourt.otherPhotos[0]];
+                        dispatch_group_leave(photoRequestGroup);
+                    }
+                }];
+                [self.courts addObject:foundCourt];
+            }
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                dispatch_group_wait(addressRequestGroup, DISPATCH_TIME_FOREVER);
+                dispatch_group_wait(photoRequestGroup, DISPATCH_TIME_FOREVER);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completion(nil,true);
+                });
             });
-        });
     }];
 }
 
