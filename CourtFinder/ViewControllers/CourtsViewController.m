@@ -12,6 +12,7 @@
 #import "Alert.h"
 #import "CourtDetailViewController.h"
 #import <Parse/Parse.h>
+#import "CourtUsersUpdates.h"
 
 @interface CourtsViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *courtsTableView;
@@ -39,16 +40,30 @@ CLLocation *previousLastLocation;
     CLLocation *lastLocation = [locations lastObject];
     self.courts = [NSMutableArray new];
     NSLog(@"Location changed lat %f - long %f", lastLocation.coordinate.latitude, lastLocation.coordinate.longitude);
-    [self loadAPIDataWithCompletion:^(NSError *error, BOOL success) {
-        if (success) {
-            NSLog(@"Successfully reloaded API data");
-            [self.courtsTableView reloadData];
+    [CourtUsersUpdates headedToParkCleanupWithCompletion:^(NSError * _Nonnull error, BOOL success) {
+        if (error != nil) {
+            NSString *errorMsg = [NSString stringWithFormat:@"Error updating database: %@", error.localizedDescription];
+            [[Alert new] showErrAlertOnView:self message:errorMsg title:@"Internal server error"];
         } else {
-            NSString *errorMsg =  [NSString stringWithFormat:@"Error fetching Google Maps Data: %@",error.localizedDescription];
-            [[Alert new] showErrAlertOnView:self message:errorMsg title:@"Google Maps Error"];
+            [self updateUserLocationWithCompletion:^(NSError *error, BOOL success) {
+                if (error != nil) {
+                    NSString *errorMsg = [NSString stringWithFormat:@"Error updating location in database: %@", error.localizedDescription];
+                    [[Alert new] showErrAlertOnView:self message:errorMsg title:@"Internal server error"];
+                } else {
+                    NSLog(@"Updated user location successfully");
+                    [self loadAPIDataWithCompletion:^(NSError *error, BOOL success) {
+                        if (success) {
+                            NSLog(@"Successfully reloaded API data");
+                            [self.courtsTableView reloadData];
+                        } else {
+                            NSString *errorMsg =  [NSString stringWithFormat:@"Error fetching Google Maps Data: %@",error.localizedDescription];
+                            [[Alert new] showErrAlertOnView:self message:errorMsg title:@"Google Maps Error"];
+                        }
+                    }];
+                }
+            }];
         }
     }];
-    [self updateUserLocation];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -84,6 +99,7 @@ CLLocation *previousLastLocation;
     [GoogleMapsAPI getDetailsForEachCourt:searchResults userLocation:self.locationManager.location completion:^(NSError * _Nonnull error, NSArray<Court *> * _Nonnull foundCourts) {
             dispatch_group_t addressRequestGroup = dispatch_group_create();
             dispatch_group_t photoRequestGroup = dispatch_group_create();
+            dispatch_group_t courtUserCountRequestGroup = dispatch_group_create();
             for (Court *foundCourt in foundCourts) {
                 dispatch_group_enter(addressRequestGroup);
                 [GoogleMapsAPI getAddressForCourt:foundCourt.placeID completion:^(NSError * _Nonnull error, NSString * _Nonnull address) {
@@ -104,11 +120,21 @@ CLLocation *previousLastLocation;
                         dispatch_group_leave(photoRequestGroup);
                     }
                 }];
+                dispatch_group_enter(courtUserCountRequestGroup);
+                [CourtUsersUpdates getUserCountForCourt:foundCourt completion:^(NSError * _Nonnull error, int count) {
+                    if (error != nil) {
+                        completion(error, false);
+                    } else {
+                        [foundCourt setPlayers:count];
+                        dispatch_group_leave(courtUserCountRequestGroup);
+                    }
+                }];
                 [self.courts addObject:foundCourt];
             }
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 dispatch_group_wait(addressRequestGroup, DISPATCH_TIME_FOREVER);
                 dispatch_group_wait(photoRequestGroup, DISPATCH_TIME_FOREVER);
+                dispatch_group_wait(courtUserCountRequestGroup, DISPATCH_TIME_FOREVER);
                 dispatch_async(dispatch_get_main_queue(), ^{
                     completion(nil,true);
                 });
@@ -116,7 +142,7 @@ CLLocation *previousLastLocation;
     }];
 }
 
-- (void)updateUserLocation {
+- (void)updateUserLocationWithCompletion:(void(^)(NSError *error, BOOL success))completion {
     PFUser *currentUser = [PFUser currentUser];
     if (currentUser) {
         PFGeoPoint *lastLocation = [PFGeoPoint new];
@@ -124,12 +150,7 @@ CLLocation *previousLastLocation;
         lastLocation.longitude = self.locationManager.location.coordinate.longitude;
         currentUser[@"lastLocation"] = lastLocation;
         [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-            if (error != nil) {
-                NSString *errorMsg = [NSString stringWithFormat:@"Error updating location in database: %@", error.localizedDescription];
-                [[Alert new] showErrAlertOnView:self message:errorMsg title:@"Internal server error"];
-            } else {
-                NSLog(@"Updated user location successfully");
-            }
+            completion(error, succeeded);
         }];
     }
 }
