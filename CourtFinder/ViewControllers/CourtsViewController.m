@@ -40,17 +40,17 @@ CLLocation *previousLastLocation;
     CLLocation *lastLocation = [locations lastObject];
     self.courts = [NSMutableArray new];
     NSLog(@"Location changed lat %f - long %f", lastLocation.coordinate.latitude, lastLocation.coordinate.longitude);
-    [CourtUsersUpdates headedToParkCleanupWithCompletion:^(NSError * _Nonnull error, BOOL success) {
+    [self updateUserLocationWithCompletion:^(NSError * _Nonnull error, BOOL success) {
         if (error != nil) {
-            NSString *errorMsg = [NSString stringWithFormat:@"Error updating database: %@", error.localizedDescription];
+            NSString *errorMsg = [NSString stringWithFormat:@"Error updating location in database: %@", error.localizedDescription];
             [[Alert new] showErrAlertOnView:self message:errorMsg title:@"Internal server error"];
         } else {
-            [self updateUserLocationWithCompletion:^(NSError *error, BOOL success) {
+            NSLog(@"Updated user location successfully");
+            [CourtUsersUpdates headedToParkCleanupWithCompletion:^(NSError *error, BOOL success) {
                 if (error != nil) {
-                    NSString *errorMsg = [NSString stringWithFormat:@"Error updating location in database: %@", error.localizedDescription];
+                    NSString *errorMsg = [NSString stringWithFormat:@"Error updating database: %@", error.localizedDescription];
                     [[Alert new] showErrAlertOnView:self message:errorMsg title:@"Internal server error"];
                 } else {
-                    NSLog(@"Updated user location successfully");
                     [self loadAPIDataWithCompletion:^(NSError *error, BOOL success) {
                         if (success) {
                             NSLog(@"Successfully reloaded API data");

@@ -33,6 +33,7 @@
     self.detailDistanceLabel.text = [Formatter formattedDistance:self.court.distanceFromUser];
     self.detailParkLabel.text = self.court.name;
     self.detailRatingLabel.text = [Formatter formattedRating:self.court.rating];
+    self.detailUserCountLabel.text = [NSString stringWithFormat:@"%d", self.court.players];
     self.detailAddressLabel.text = self.court.address;
     self.detailImagesPageControl.numberOfPages = self.court.otherPhotos.count;
 }

@@ -25,7 +25,7 @@
             NSLog(@"timeDifference in minutes = %f", timeDifference/60);
             // if the time difference is greater than 15 minutes, set user as we would set someone who has opted out
             if (timeDifference > 900) {
-                user[@"headedToPark"] = @"";
+                user[@"headedToPark"] = [NSNull new];
                 user[@"lastSetHeadedToPark"] = [NSDate date];
                 NSLog(@"Adding updated user %@", user.username);
                 [updatedUsers addObject:user];
@@ -50,6 +50,7 @@
     courtLocation.latitude = court.location.coordinate.latitude;
     courtLocation.longitude = court.location.coordinate.longitude;
     [locationQuery whereKey:@"lastLocation" nearGeoPoint:courtLocation withinKilometers:0.1];
+    [locationQuery whereKey:@"headedToPark" equalTo:@""];
     [optInQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable optInUsers, NSError * _Nullable error) {
         if (error != nil) {
             completion(error, 0);
