@@ -80,11 +80,10 @@
                 NSString *successMsg;
                 if (!self.optedIn) {
                     successMsg = @"You will now be considered for this park's headcount. Please arrive during the next 15 minutes or you will be removed from the headcount";
-                    self.optedIn = true;
                 } else {
                     successMsg = @"You have now been removed from the park's headcount";
-                    self.optedIn = false;
                 }
+                self.optedIn = !self.optedIn;
                 [self updateOptedInButton];
                 [[Alert new] showSuccessAlertOnView:self message:successMsg title:@"Updated successfully"];
             }
@@ -95,9 +94,11 @@
 - (void)updateOptedInButton {
     if (self.optedIn) {
         [self.detailOMWButton setTitle:@"On my way!" forState:UIControlStateSelected];
+        [self.detailOMWButton setBackgroundColor:[UIColor colorWithRed:0.80 green:0.39 blue:0.00 alpha:1.0]];
         [self.detailOMWButton setSelected:true];
     } else {
         [self.detailOMWButton setTitle:@"Count me in!" forState:UIControlStateNormal];
+        [self.detailOMWButton setBackgroundColor:[UIColor colorWithRed:1.00 green:0.49 blue:0.00 alpha:1.0]];
         [self.detailOMWButton setSelected:false];
     }
 }
