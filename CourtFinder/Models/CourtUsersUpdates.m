@@ -10,18 +10,14 @@
 
 @implementation CourtUsersUpdates
 + (void)headedToParkCleanupWithCompletion:(void(^)(NSError *error, BOOL success))completion {
-    PFQuery *emptyStringQuery = [PFUser query];
-    [emptyStringQuery whereKey:@"headedToPark" notEqualTo:@""];
-    PFQuery *undefinedQuery = [PFUser query];
-    [undefinedQuery whereKeyExists:@"headedToPark"];
-    PFQuery *query = [PFQuery orQueryWithSubqueries:@[emptyStringQuery, undefinedQuery]];
+    PFQuery *query = [PFUser query];
+    [query whereKeyExists:@"headedToPark"];
     [query includeKeys:[NSArray arrayWithObjects:@"headedToPark", @"lastSetHeadedToPark", @"username", nil]];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
         NSMutableArray *updatedUsers = [NSMutableArray new];
         for (PFUser *user in users) {
             NSTimeInterval timeDifference = [[NSDate date] timeIntervalSinceDate:user[@"lastSetHeadedToPark"] ];
             NSLog(@"User=%@", user.username);
-            NSLog(@"timeDifference in seconds = %f", timeDifference);
             NSLog(@"timeDifference in minutes = %f", timeDifference/60);
             // if the time difference is greater than 15 minutes, set user as we would set someone who has opted out
             if (timeDifference > 900) {
@@ -50,7 +46,7 @@
     courtLocation.latitude = court.location.coordinate.latitude;
     courtLocation.longitude = court.location.coordinate.longitude;
     [locationQuery whereKey:@"lastLocation" nearGeoPoint:courtLocation withinKilometers:0.1];
-    [locationQuery whereKey:@"headedToPark" equalTo:@""];
+    [locationQuery whereKey:@"headedToPark" equalTo:[NSNull new]];
     [optInQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable optInUsers, NSError * _Nullable error) {
         if (error != nil) {
             completion(error, 0);

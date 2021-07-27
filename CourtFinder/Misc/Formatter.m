@@ -16,6 +16,8 @@
         float roundedDistance = round(2.0f * distanceFromUser) / (2.0f * 1000.0f);
         NSString *numberString = [formatter stringFromNumber:[NSNumber numberWithFloat:roundedDistance]];
         return [NSString stringWithFormat:@"%@ km",numberString];
+    } else if (distanceFromUser < 100) {
+        return @"You are here!";
     } else {
         float roundedDistance = round(2.0f * distanceFromUser) / 2.0f;
         NSString *numberString = [formatter stringFromNumber:[NSNumber numberWithFloat:roundedDistance]];

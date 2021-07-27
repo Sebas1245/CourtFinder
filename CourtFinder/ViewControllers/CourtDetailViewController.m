@@ -22,11 +22,14 @@
 @property (weak, nonatomic) IBOutlet UIButton *detailOMWButton;
 @property (weak, nonatomic) IBOutlet UIPageControl *detailImagesPageControl;
 @property int imageBeingDisplayed;
+@property BOOL optedIn;
 @end
 
 @implementation CourtDetailViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.optedIn = [self getOnLoadButtonStatus];
+    [self updateOptedInButton];
     self.imageBeingDisplayed = 0;
     self.detailOMWButton.layer.cornerRadius = 15.0f;
     [self.detailImageView setImage:self.court.mainPhoto];
@@ -65,14 +68,9 @@
 }
 
 - (IBAction)tappedOnMyWayBtn:(id)sender {
-    NSString *headedToPark = [self.detailOMWButton isSelected] ? @"" : self.court.placeID;
-    [self updateHeadedToPark:headedToPark];
-}
-
-- (void)updateHeadedToPark:(NSString *)headedToPark {
     PFUser *currentUser = [PFUser currentUser];
     if (currentUser) {
-        currentUser[@"headedToPark"] = headedToPark;
+        currentUser[@"headedToPark"] = self.optedIn ? [NSNull new] : self.court.placeID;
         currentUser[@"lastSetHeadedToPark"] = [NSDate date];
         [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (error != nil) {
@@ -80,16 +78,39 @@
                 [[Alert new] showErrAlertOnView:self message:errMsg title:@"Internal server error"];
             } else {
                 NSString *successMsg;
-                [self.detailOMWButton setSelected:![self.detailOMWButton isSelected]];
-                if (![headedToPark isEqual:@""]) {
+                if (!self.optedIn) {
                     successMsg = @"You will now be considered for this park's headcount. Please arrive during the next 15 minutes or you will be removed from the headcount";
+                    self.optedIn = true;
                 } else {
                     successMsg = @"You have now been removed from the park's headcount";
+                    self.optedIn = false;
                 }
+                [self updateOptedInButton];
                 [[Alert new] showSuccessAlertOnView:self message:successMsg title:@"Updated successfully"];
             }
         }];
     }
+}
+
+- (void)updateOptedInButton {
+    if (self.optedIn) {
+        [self.detailOMWButton setTitle:@"On my way!" forState:UIControlStateSelected];
+        [self.detailOMWButton setSelected:true];
+    } else {
+        [self.detailOMWButton setTitle:@"Count me in!" forState:UIControlStateNormal];
+        [self.detailOMWButton setSelected:false];
+    }
+}
+
+- (BOOL)getOnLoadButtonStatus {
+    PFUser *currentUser = [PFUser currentUser];
+    if (self.court.distanceFromUser < 100) {
+        [self.detailOMWButton setEnabled:false];
+        [self.detailOMWButton setBackgroundColor:[UIColor colorWithRed:0.80 green:0.80 blue:0.80 alpha:0.2]];
+        [self.detailOMWButton setTitleColor:[UIColor colorWithRed:0.29 green:0.53 blue:0.91 alpha:0.8]
+                                   forState:UIControlStateDisabled];
+    }
+    return (currentUser[@"headedToPark"] != [NSNull new]);
 }
 
 #pragma mark - Navigation

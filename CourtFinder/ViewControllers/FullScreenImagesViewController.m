@@ -32,8 +32,8 @@
 }
 
 - (void)setupScrollViewImages {
-    for(int i = 0; i < self.photos.count; i++) {
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i*self.viewWidth, -85, self.viewWidth, self.viewHeight)];
+    for (int i = 0; i < self.photos.count; i++) {
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i * self.viewWidth, -85, self.viewWidth, self.viewHeight)];
         imageView.image = self.photos[i];
         imageView.contentMode = UIViewContentModeScaleAspectFit;
         [self.fullScreenSV addSubview:imageView];
