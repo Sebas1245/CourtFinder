@@ -29,20 +29,21 @@
 + (void)getUserCountForCourt:(Court *)court completion:(void(^)(NSError *error, int count))completion {
     PFQuery *optInQuery = [PFQuery queryWithClassName:@"OptIn"];
     [optInQuery whereKey:@"headedToPark" equalTo:court.placeID];
-    [optInQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable optInUsers, NSError * _Nullable error) {
+    [optInQuery includeKey:@"user"];
+    [optInQuery findObjectsInBackgroundWithBlock:^(NSArray* _Nullable optInUsers, NSError * _Nullable error) {
         if (error != nil) {
             completion(error, 0);
         } else {
-            NSMutableArray *optInUserIds = [NSMutableArray new];
+            NSMutableArray *optInUserUsernames = [NSMutableArray new];
             for (PFObject *optInUser in optInUsers) {
-                [optInUserIds addObject:optInUser[@"userID"]];
+                [optInUserUsernames addObject:optInUser[@"user"][@"username"]];
             }
             PFQuery *locationQuery = [PFUser query];
             PFGeoPoint *courtLocation = [PFGeoPoint new];
             courtLocation.latitude = court.location.coordinate.latitude;
             courtLocation.longitude = court.location.coordinate.longitude;
             [locationQuery whereKey:@"lastLocation" nearGeoPoint:courtLocation withinKilometers:0.1];
-            [locationQuery whereKey:@"objectId" notContainedIn:optInUsers];
+            [locationQuery whereKey:@"username" notContainedIn:optInUserUsernames];
             [locationQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable atLocationUsers, NSError * _Nullable error) {
                 if (error != nil) {
                     completion(error, 0);

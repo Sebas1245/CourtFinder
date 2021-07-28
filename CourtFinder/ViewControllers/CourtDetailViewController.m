@@ -105,19 +105,21 @@
 - (void)updateOptedInButton {
     if (self.court.distanceFromUser < 100) {
         [self.detailOMWButton setEnabled:false];
+        [self.detailOMWButton setTitle:@"Count me in!" forState:UIControlStateDisabled];
         [self.detailOMWButton setBackgroundColor:[UIColor colorWithRed:0.80 green:0.80 blue:0.80 alpha:0.2]];
-        [self.detailOMWButton setTitleColor:[UIColor colorWithRed:0.29 green:0.53 blue:0.91 alpha:0.8]
+        [self.detailOMWButton setTitleColor:[UIColor colorWithRed:0.29 green:0.53 blue:0.91 alpha:0.5]
                                    forState:UIControlStateDisabled];
         return;
-    }
-    if (self.optedIn) {
-        [self.detailOMWButton setTitle:@"On my way!" forState:UIControlStateSelected];
-        [self.detailOMWButton setBackgroundColor:[UIColor colorWithRed:0.80 green:0.39 blue:0.00 alpha:1.0]];
-        [self.detailOMWButton setSelected:true];
     } else {
-        [self.detailOMWButton setTitle:@"Count me in!" forState:UIControlStateNormal];
-        [self.detailOMWButton setBackgroundColor:[UIColor colorWithRed:1.00 green:0.49 blue:0.00 alpha:1.0]];
-        [self.detailOMWButton setSelected:false];
+        if (self.optedIn) {
+            [self.detailOMWButton setTitle:@"On my way!" forState:UIControlStateSelected];
+            [self.detailOMWButton setBackgroundColor:[UIColor colorWithRed:0.80 green:0.39 blue:0.00 alpha:1.0]];
+            [self.detailOMWButton setSelected:true];
+        } else {
+            [self.detailOMWButton setTitle:@"Count me in!" forState:UIControlStateNormal];
+            [self.detailOMWButton setBackgroundColor:[UIColor colorWithRed:1.00 green:0.49 blue:0.00 alpha:1.0]];
+            [self.detailOMWButton setSelected:false];
+        }
     }
 }
 
