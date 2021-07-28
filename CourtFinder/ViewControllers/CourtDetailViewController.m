@@ -13,7 +13,7 @@
 #import "FullScreenImagesViewController.h"
 #import "OptIn.h"
 
-@interface CourtDetailViewController ()
+@interface CourtDetailViewController () <UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning>
 @property (weak, nonatomic) IBOutlet UIImageView *detailImageView;
 @property (weak, nonatomic) IBOutlet UILabel *detailDistanceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *detailAddressLabel;
@@ -25,6 +25,7 @@
 @property int imageBeingDisplayed;
 @property BOOL optedIn;
 @property PFObject *optIn;
+@property BOOL isPresenting;
 @end
 
 @implementation CourtDetailViewController
@@ -40,6 +41,7 @@
     self.detailUserCountLabel.text = [NSString stringWithFormat:@"%d", self.court.players];
     self.detailAddressLabel.text = self.court.address;
     self.detailImagesPageControl.numberOfPages = self.court.otherPhotos.count;
+    self.isPresenting = YES;
 }
 
 - (IBAction)swipeLeftOnPhoto:(id)sender {
@@ -145,10 +147,49 @@
     }
 }
 
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
+                                                                  presentingController:(UIViewController *)presenting
+                                                                      sourceController:(UIViewController *)source {
+    self.isPresenting = YES;
+    return self;
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    self.isPresenting = NO;
+    return self;
+}
+
+- (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext {
+    return 0.9;
+}
+
+- (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext {
+    UIView *containerView = transitionContext.containerView;
+    UIViewController *toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    UIViewController *fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    if (self.isPresenting) {
+        [containerView addSubview:toViewController.view];
+        toViewController.view.alpha = 0;
+        [UIView animateWithDuration:0.9 animations:^{
+            toViewController.view.alpha = 1;
+        } completion:^(BOOL finished) {
+            [transitionContext completeTransition:YES];
+        }];
+    } else {
+        [UIView animateWithDuration:0.9 animations:^{
+            fromViewController.view.alpha = 0;
+        } completion:^(BOOL finished) {
+            [transitionContext completeTransition:YES];
+            [fromViewController.view removeFromSuperview];
+        }];
+    }
+}
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     FullScreenImagesViewController *fullScreenImagesVC = [segue destinationViewController];
     fullScreenImagesVC.photos = self.court.otherPhotos;
+    fullScreenImagesVC.modalPresentationStyle = UIModalPresentationCustom;
+    fullScreenImagesVC.transitioningDelegate = self;
 }
 @end

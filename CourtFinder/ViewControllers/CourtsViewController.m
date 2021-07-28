@@ -20,8 +20,6 @@
 @end
 
 @implementation CourtsViewController
-CLLocation *previousLastLocation;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.locationManager = [CLLocationManager new];

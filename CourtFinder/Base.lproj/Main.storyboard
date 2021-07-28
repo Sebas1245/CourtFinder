@@ -522,7 +522,7 @@
                                                     <imageReference key="image" image="viewfinder" catalog="system" symbolScale="large"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="5f9-4x-1t3" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="CZk-fz-s7H"/>
+                                                    <segue destination="5f9-4x-1t3" kind="presentation" modalPresentationStyle="overFullScreen" id="CZk-fz-s7H"/>
                                                 </connections>
                                             </button>
                                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="gBa-wX-hFD">
