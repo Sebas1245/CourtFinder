@@ -11,11 +11,14 @@
 @implementation CourtUsersUpdates
 + (void)headedToParkCleanupWithCompletion:(void(^)(NSError *error, BOOL success))completion {
     PFQuery *query = [PFQuery queryWithClassName:@"OptIn"];
-    [query whereKey:@"expiresAt" greaterThan:[NSDate now]];
+    [query whereKey:@"expiresAt" lessThan:[NSDate date]];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable expiredOptIns, NSError * _Nullable error) {
         if (error != nil) {
             completion(error, false);
         } else {
+            for (PFObject *expiredOptIn in expiredOptIns) {
+                NSLog(@"%@", expiredOptIn[@"expiresAt"]);
+            }
             [PFObject deleteAllInBackground:expiredOptIns block:^(BOOL succeeded, NSError * _Nullable error) {
                 completion(error, succeeded);
             }];

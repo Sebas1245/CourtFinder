@@ -31,7 +31,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self getOnLoadButtonStatus];
-    [self updateOptedInButton];
     self.imageBeingDisplayed = 0;
     self.detailOMWButton.layer.cornerRadius = 15.0f;
     [self.detailImageView setImage:self.court.mainPhoto];
@@ -104,6 +103,13 @@
 }
 
 - (void)updateOptedInButton {
+    if (self.court.distanceFromUser < 100) {
+        [self.detailOMWButton setEnabled:false];
+        [self.detailOMWButton setBackgroundColor:[UIColor colorWithRed:0.80 green:0.80 blue:0.80 alpha:0.2]];
+        [self.detailOMWButton setTitleColor:[UIColor colorWithRed:0.29 green:0.53 blue:0.91 alpha:0.8]
+                                   forState:UIControlStateDisabled];
+        return;
+    }
     if (self.optedIn) {
         [self.detailOMWButton setTitle:@"On my way!" forState:UIControlStateSelected];
         [self.detailOMWButton setBackgroundColor:[UIColor colorWithRed:0.80 green:0.39 blue:0.00 alpha:1.0]];
@@ -117,12 +123,6 @@
 
 - (void)getOnLoadButtonStatus {
     PFUser *currentUser = [PFUser currentUser];
-    if (self.court.distanceFromUser < 100) {
-        [self.detailOMWButton setEnabled:false];
-        [self.detailOMWButton setBackgroundColor:[UIColor colorWithRed:0.80 green:0.80 blue:0.80 alpha:0.2]];
-        [self.detailOMWButton setTitleColor:[UIColor colorWithRed:0.29 green:0.53 blue:0.91 alpha:0.8]
-                                   forState:UIControlStateDisabled];
-    }
     if (currentUser) {
         [OptIn getOptInForUser:currentUser courtID:self.court.placeID completion:^(BOOL exists, PFObject *optIn, NSError * _Nullable error) {
             if (error != nil) {
@@ -130,9 +130,8 @@
                 [[Alert new] showErrAlertOnView:self message:errMsg title:@"Internal server error"];
             } else {
                 self.optedIn = exists;
-                if (self.optIn) {
-                    self.optIn = optIn;
-                }
+                self.optIn = optIn;
+                [self updateOptedInButton];
             }
         }];
     }

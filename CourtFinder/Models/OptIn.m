@@ -10,7 +10,7 @@
 @implementation OptIn
 + (void)getOptInForUser:(PFUser *)user courtID:(NSString *)courtID completion:(void(^)(BOOL exists, PFObject *optIn, NSError  * _Nullable error))completion {
     PFQuery *query = [PFQuery queryWithClassName:@"OptIn"];
-    [query whereKey:@"userID" equalTo:user.objectId];
+    [query whereKey:@"userID" equalTo:user];
     [query whereKey:@"headedToPark" equalTo:courtID];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (error != nil) {
@@ -29,7 +29,7 @@
     PFObject *newOptIn = [PFObject objectWithClassName:@"OptIn"];
     newOptIn[@"userID"] = user;
     newOptIn[@"headedToPark"] = courtID;
-    newOptIn[@"expiresAt"] = [[NSDate new] dateByAddingTimeInterval:900];
+    newOptIn[@"expiresAt"] = [[NSDate date] dateByAddingTimeInterval:900];
     [newOptIn saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         completion(succeeded, newOptIn, error);
     }];
