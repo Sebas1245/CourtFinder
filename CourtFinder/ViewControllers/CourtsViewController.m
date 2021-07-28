@@ -14,7 +14,7 @@
 #import <Parse/Parse.h>
 #import "CourtUsersUpdates.h"
 
-@interface CourtsViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
+@interface CourtsViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, CourtDetailViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *courtsTableView;
 @property (strong, nonatomic) NSMutableArray<Court*> *courts;
 @end
@@ -155,6 +155,10 @@ CLLocation *previousLastLocation;
     }
 }
 
+- (void)tappedOptInOnCourtNumber:(NSIndexPath *)courtIndexPath{
+    [self.courtsTableView reloadData];
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -163,5 +167,7 @@ CLLocation *previousLastLocation;
     Court *selectedCourt = self.courts[indexPath.row];
     CourtDetailViewController *courtDetailVC = [segue destinationViewController];
     courtDetailVC.court = selectedCourt;
+    courtDetailVC.courtIndexPath = indexPath;
+    courtDetailVC.delegate = self;
 }
 @end

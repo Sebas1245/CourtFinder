@@ -82,6 +82,9 @@
                 alertMsg = @"You have now been removed from the park's headcount";
                 self.optedIn = false;
                 [self updateOptedInButton];
+                self.court.players--;
+                self.detailUserCountLabel.text = [NSString stringWithFormat:@"%d", self.court.players];
+                [self.delegate tappedOptInOnCourtNumber:self.courtIndexPath];
             }
             [[Alert new] showSuccessAlertOnView:self message:alertMsg title:alertTitle];
         }];
@@ -96,6 +99,9 @@
                 self.optIn = newOptIn;
                 self.optedIn = true;
                 [self updateOptedInButton];
+                self.court.players++;
+                self.detailUserCountLabel.text = [NSString stringWithFormat:@"%d", self.court.players];
+                [self.delegate tappedOptInOnCourtNumber:self.courtIndexPath];
             }
             [[Alert new] showSuccessAlertOnView:self message:alertMsg title:alertTitle];
         }];
