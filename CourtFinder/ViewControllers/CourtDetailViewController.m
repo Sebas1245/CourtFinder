@@ -11,6 +11,7 @@
 #import "Formatter.h"
 #import <Parse/Parse.h>
 #import "FullScreenImagesViewController.h"
+#import "OptIn.h"
 
 @interface CourtDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *detailImageView;
@@ -23,13 +24,13 @@
 @property (weak, nonatomic) IBOutlet UIPageControl *detailImagesPageControl;
 @property int imageBeingDisplayed;
 @property BOOL optedIn;
+@property PFObject *optIn;
 @end
 
 @implementation CourtDetailViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.optedIn = [self getOnLoadButtonStatus];
-    [self updateOptedInButton];
+    [self getOnLoadButtonStatus];
     self.imageBeingDisplayed = 0;
     self.detailOMWButton.layer.cornerRadius = 15.0f;
     [self.detailImageView setImage:self.court.mainPhoto];
@@ -69,49 +70,73 @@
 
 - (IBAction)tappedOnMyWayBtn:(id)sender {
     PFUser *currentUser = [PFUser currentUser];
-    if (currentUser) {
-        currentUser[@"headedToPark"] = self.optedIn ? [NSNull new] : self.court.placeID;
-        currentUser[@"lastSetHeadedToPark"] = [NSDate date];
-        [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+    __block NSString *alertTitle;
+    __block NSString *alertMsg;
+    if (self.optedIn) {
+        [OptIn deleteOptIn:self.optIn completion:^(BOOL success, NSError * _Nonnull error) {
             if (error != nil) {
-                NSString * errMsg = [NSString stringWithFormat:@"Error saving opt in to park: %@", error.localizedDescription];
-                [[Alert new] showErrAlertOnView:self message:errMsg title:@"Internal server error"];
+                alertMsg = [NSString stringWithFormat:@"Error removing opt in: %@", error.localizedDescription];
+                alertTitle = @"Internal server error";
             } else {
-                NSString *successMsg;
-                if (!self.optedIn) {
-                    successMsg = @"You will now be considered for this park's headcount. Please arrive during the next 15 minutes or you will be removed from the headcount";
-                } else {
-                    successMsg = @"You have now been removed from the park's headcount";
-                }
-                self.optedIn = !self.optedIn;
+                alertTitle = @"Successfully removed";
+                alertMsg = @"You have now been removed from the park's headcount";
+                self.optedIn = false;
                 [self updateOptedInButton];
-                [[Alert new] showSuccessAlertOnView:self message:successMsg title:@"Updated successfully"];
             }
+            [[Alert new] showSuccessAlertOnView:self message:alertMsg title:alertTitle];
+        }];
+    } else {
+        [OptIn createOptInForUser:currentUser courtID:self.court.placeID completion:^(BOOL success, PFObject * _Nonnull newOptIn, NSError * _Nonnull error) {
+            if (error != nil) {
+                alertTitle = @"Successfully removed";
+                alertMsg = @"You have now been removed from the park's headcount";
+            } else {
+                alertTitle = @"Successfully opted in";
+                alertMsg = @"You will now be considered for this park's headcount. Please arrive during the next 15 minutes or you will be removed from the headcount";
+                self.optIn = newOptIn;
+                self.optedIn = true;
+                [self updateOptedInButton];
+            }
+            [[Alert new] showSuccessAlertOnView:self message:alertMsg title:alertTitle];
         }];
     }
 }
 
 - (void)updateOptedInButton {
-    if (self.optedIn) {
-        [self.detailOMWButton setTitle:@"On my way!" forState:UIControlStateSelected];
-        [self.detailOMWButton setBackgroundColor:[UIColor colorWithRed:0.80 green:0.39 blue:0.00 alpha:1.0]];
-        [self.detailOMWButton setSelected:true];
+    if (self.court.distanceFromUser < 100) {
+        [self.detailOMWButton setEnabled:false];
+        [self.detailOMWButton setTitle:@"Count me in!" forState:UIControlStateDisabled];
+        [self.detailOMWButton setBackgroundColor:[UIColor colorWithRed:0.80 green:0.80 blue:0.80 alpha:0.2]];
+        [self.detailOMWButton setTitleColor:[UIColor colorWithRed:0.29 green:0.53 blue:0.91 alpha:0.5]
+                                   forState:UIControlStateDisabled];
+        return;
     } else {
-        [self.detailOMWButton setTitle:@"Count me in!" forState:UIControlStateNormal];
-        [self.detailOMWButton setBackgroundColor:[UIColor colorWithRed:1.00 green:0.49 blue:0.00 alpha:1.0]];
-        [self.detailOMWButton setSelected:false];
+        if (self.optedIn) {
+            [self.detailOMWButton setTitle:@"On my way!" forState:UIControlStateSelected];
+            [self.detailOMWButton setBackgroundColor:[UIColor colorWithRed:0.80 green:0.39 blue:0.00 alpha:1.0]];
+            [self.detailOMWButton setSelected:true];
+        } else {
+            [self.detailOMWButton setTitle:@"Count me in!" forState:UIControlStateNormal];
+            [self.detailOMWButton setBackgroundColor:[UIColor colorWithRed:1.00 green:0.49 blue:0.00 alpha:1.0]];
+            [self.detailOMWButton setSelected:false];
+        }
     }
 }
 
-- (BOOL)getOnLoadButtonStatus {
+- (void)getOnLoadButtonStatus {
     PFUser *currentUser = [PFUser currentUser];
-    if (self.court.distanceFromUser < 100) {
-        [self.detailOMWButton setEnabled:false];
-        [self.detailOMWButton setBackgroundColor:[UIColor colorWithRed:0.80 green:0.80 blue:0.80 alpha:0.2]];
-        [self.detailOMWButton setTitleColor:[UIColor colorWithRed:0.29 green:0.53 blue:0.91 alpha:0.8]
-                                   forState:UIControlStateDisabled];
+    if (currentUser) {
+        [OptIn getOptInForUser:currentUser courtID:self.court.placeID completion:^(BOOL exists, PFObject *optIn, NSError * _Nullable error) {
+            if (error != nil) {
+                NSString *errMsg = [NSString stringWithFormat:@"Error getting opt in information: %@", error.localizedDescription];
+                [[Alert new] showErrAlertOnView:self message:errMsg title:@"Internal server error"];
+            } else {
+                self.optedIn = exists;
+                self.optIn = optIn;
+                [self updateOptedInButton];
+            }
+        }];
     }
-    return (currentUser[@"headedToPark"] != [NSNull new]);
 }
 
 #pragma mark - Navigation

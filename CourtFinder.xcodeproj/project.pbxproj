@@ -22,6 +22,7 @@
 		7986493026A611B10047D60E /* Formatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7986492F26A611B10047D60E /* Formatter.m */; };
 		7986493326A742BE0047D60E /* FullScreenImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7986493226A742BE0047D60E /* FullScreenImagesViewController.m */; };
 		7986493B26A9A9A30047D60E /* CourtUsersUpdates.m in Sources */ = {isa = PBXBuildFile; fileRef = 7986493A26A9A9A30047D60E /* CourtUsersUpdates.m */; };
+		79CF8D7126B0B745002DDD9C /* OptIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CF8D7026B0B745002DDD9C /* OptIn.m */; };
 		79F77864269CC40A000814E4 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F77863269CC40A000814E4 /* LoginViewController.m */; };
 		79F77867269CC418000814E4 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F77866269CC418000814E4 /* SignUpViewController.m */; };
 		79F7786D269CDF29000814E4 /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F7786C269CDF29000814E4 /* Alert.m */; };
@@ -83,6 +84,8 @@
 		7986493226A742BE0047D60E /* FullScreenImagesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FullScreenImagesViewController.m; sourceTree = "<group>"; };
 		7986493926A9A9A30047D60E /* CourtUsersUpdates.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourtUsersUpdates.h; sourceTree = "<group>"; };
 		7986493A26A9A9A30047D60E /* CourtUsersUpdates.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourtUsersUpdates.m; sourceTree = "<group>"; };
+		79CF8D6F26B0B745002DDD9C /* OptIn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OptIn.h; sourceTree = "<group>"; };
+		79CF8D7026B0B745002DDD9C /* OptIn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OptIn.m; sourceTree = "<group>"; };
 		79F77862269CC40A000814E4 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		79F77863269CC40A000814E4 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		79F77865269CC418000814E4 /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
@@ -242,6 +245,8 @@
 				79F77878269E14FF000814E4 /* Court.m */,
 				7986493926A9A9A30047D60E /* CourtUsersUpdates.h */,
 				7986493A26A9A9A30047D60E /* CourtUsersUpdates.m */,
+				79CF8D6F26B0B745002DDD9C /* OptIn.h */,
+				79CF8D7026B0B745002DDD9C /* OptIn.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -556,6 +561,7 @@
 				794F7196269CBB8700529339 /* ViewController.m in Sources */,
 				7986493326A742BE0047D60E /* FullScreenImagesViewController.m in Sources */,
 				794F7190269CBB8700529339 /* AppDelegate.m in Sources */,
+				79CF8D7126B0B745002DDD9C /* OptIn.m in Sources */,
 				7986493026A611B10047D60E /* Formatter.m in Sources */,
 				79F77876269DF061000814E4 /* CourtCell.m in Sources */,
 				79F77873269DE71F000814E4 /* SettingsScreenViewController.m in Sources */,
