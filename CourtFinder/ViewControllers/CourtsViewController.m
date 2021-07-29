@@ -13,10 +13,12 @@
 #import "CourtDetailViewController.h"
 #import <Parse/Parse.h>
 #import "CourtUsersUpdates.h"
+#import <Lottie/Lottie.h>
 
 @interface CourtsViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, CourtDetailViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *courtsTableView;
 @property (strong, nonatomic) NSMutableArray<Court*> *courts;
+@property (strong, nonatomic) LOTAnimationView *lottieAnimation;
 @end
 
 @implementation CourtsViewController
@@ -32,6 +34,7 @@
     [self.locationManager startMonitoringSignificantLocationChanges];
     self.courtsTableView.delegate = self;
     self.courtsTableView.dataSource = self;
+    [self setupLottieAnimation];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
@@ -53,6 +56,16 @@
                         if (success) {
                             NSLog(@"Successfully reloaded API data");
                             [self.courtsTableView reloadData];
+                            [UIView animateWithDuration:0.4
+                                             animations:^{
+                                                self.lottieAnimation.layer.opacity = 0;
+                                             }
+                                             completion:^(BOOL finished) {
+                                                if (finished) {
+                                                    [self.lottieAnimation removeFromSuperview];
+                                                }
+                                             }
+                            ];
                         } else {
                             NSString *errorMsg =  [NSString stringWithFormat:@"Error fetching Google Maps Data: %@",error.localizedDescription];
                             [[Alert new] showErrAlertOnView:self message:errorMsg title:@"Google Maps Error"];
@@ -157,6 +170,16 @@
     [self.courtsTableView reloadData];
 }
 
+
+- (void)setupLottieAnimation {
+    self.lottieAnimation = [LOTAnimationView animationNamed:@"lottie-baseketball"];
+    self.lottieAnimation.loopAnimation = YES;
+    self.lottieAnimation.backgroundColor = [UIColor systemBackgroundColor];
+    self.lottieAnimation.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    self.lottieAnimation.contentMode = UIViewContentModeScaleAspectFill;
+    [self.view addSubview:self.lottieAnimation];
+    [self.lottieAnimation play];
+}
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

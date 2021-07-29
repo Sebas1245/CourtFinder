@@ -10,6 +10,7 @@ target 'CourtFinder' do
   pod 'LoremIpsum'
   pod 'AFNetworking'
   pod 'GooglePlaces'
+  pod 'lottie-ios', '2.5.3'
   target 'CourtFinderTests' do
     inherit! :search_paths
     # Pods for testing
