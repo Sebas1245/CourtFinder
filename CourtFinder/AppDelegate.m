@@ -17,6 +17,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [self setupLocationMonitor:launchOptions];
     NSString *path = [[NSBundle mainBundle] pathForResource: @"Keys" ofType: @"plist"];
     NSDictionary *keysDictionary = [NSDictionary dictionaryWithContentsOfFile: path];
     ParseClientConfiguration *parseConfig = [ParseClientConfiguration configurationWithBlock:^(id<ParseMutableClientConfiguration>  _Nonnull configuration) {
@@ -29,6 +30,35 @@
     return YES;
 }
 
+- (void)setupLocationMonitor:(NSDictionary *)launchOptions {
+    self.locationManager = [CLLocationManager new];
+    self.locationManager.delegate = self;
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    if ([self.locationManager respondsToSelector:@selector(setAllowsBackgroundLocationUpdates:)]) {
+        [self.locationManager setAllowsBackgroundLocationUpdates:YES];
+    }
+    CLAuthorizationStatus locationAuthStatus = [self.locationManager authorizationStatus];
+    if ([launchOptions valueForKey:UIApplicationLaunchOptionsLocationKey] != nil) {
+        NSLog(@"relaunching becuase of significant location change");
+        [self.locationManager startMonitoringSignificantLocationChanges];
+    } else {
+        if (locationAuthStatus == kCLAuthorizationStatusAuthorizedAlways) {
+            NSLog(@"launching with authorization to always use location");
+            [self.locationManager startMonitoringSignificantLocationChanges];
+        } else {
+            NSLog(@"launching with no authorization to always use location - requesting authorization");
+            if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
+                [self.locationManager requestAlwaysAuthorization];
+            }
+        }
+    }
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    self.currentUserLocation = locations.lastObject;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"locationUpdated" object:nil];
+}
 
 #pragma mark - UISceneSession lifecycle
 

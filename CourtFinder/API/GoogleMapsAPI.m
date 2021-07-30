@@ -61,7 +61,7 @@
         completion(nil, foundCourts);
 }
 
-+(void)getAddressForCourt:(NSString *)placeID completion:(void(^)(NSError* error, NSString *address))completion {
++ (void)getAddressForCourt:(NSString *)placeID completion:(void(^)(NSError* error, NSString *address))completion {
     GMSPlaceField fields = (GMSPlaceFieldFormattedAddress);
     [[GMSPlacesClient sharedClient] fetchPlaceFromPlaceID:placeID placeFields:fields sessionToken:nil
         callback:^(GMSPlace * _Nullable place, NSError * _Nullable error) {
@@ -74,7 +74,7 @@
     }];
 }
 
-+(void)getAllPhotosForCourt:(NSString*)placeID completion:(void(^)(NSError *error, NSArray<UIImage *> *photos))completion {
++ (void)getAllPhotosForCourt:(NSString*)placeID completion:(void(^)(NSError *error, NSArray<UIImage *> *photos))completion {
     GMSPlaceField fields = (GMSPlaceFieldPhotos);
     [[GMSPlacesClient sharedClient] fetchPlaceFromPlaceID:placeID placeFields:fields sessionToken:nil
         callback:^(GMSPlace * _Nullable place, NSError * _Nullable error) {
@@ -111,7 +111,7 @@
     }];
 }
 
-+(void)getOnePhotoWithMetadata:(GMSPlacePhotoMetadata *)photoMetadata completion:(void(^)(NSError *error, UIImage *photo))completion {
++ (void)getOnePhotoWithMetadata:(GMSPlacePhotoMetadata *)photoMetadata completion:(void(^)(NSError *error, UIImage *photo))completion {
     [[GMSPlacesClient sharedClient] loadPlacePhoto:photoMetadata callback:^(UIImage * _Nullable photo, NSError * _Nullable error) {
         if (error != nil) {
             NSLog(@"Error getting photo with metadata %@", error.localizedDescription);
@@ -121,5 +121,4 @@
         }
     }];
 }
-
 @end

@@ -12,8 +12,9 @@
 #import <Parse/Parse.h>
 #import "FullScreenImagesViewController.h"
 #import "OptIn.h"
+#import "CourtsViewController.h"
 
-@interface CourtDetailViewController () <UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning>
+@interface CourtDetailViewController () <UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning, CourtViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *detailImageView;
 @property (weak, nonatomic) IBOutlet UILabel *detailDistanceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *detailAddressLabel;
@@ -145,6 +146,13 @@
             }
         }];
     }
+}
+
+- (void)updatedCourt:(Court *)updatedCourt {
+    self.court = updatedCourt;
+    [self updateOptedInButton];
+    self.detailDistanceLabel.text = [Formatter formattedDistance:self.court.distanceFromUser];
+    self.detailUserCountLabel.text = [NSString stringWithFormat:@"%d", self.court.players];
 }
 
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented

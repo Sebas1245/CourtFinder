@@ -7,11 +7,18 @@
 
 #import "ViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "Court.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CourtsViewController : ViewController <CLLocationManagerDelegate>
-@property (strong,nonatomic) CLLocationManager *locationManager;
+@protocol CourtViewControllerDelegate <NSObject>
+
+- (void)updatedCourt:(Court *)updatedCourt;
+
+@end
+
+@interface CourtsViewController : ViewController
+@property (weak, nonatomic) id<CourtViewControllerDelegate> delegate;
 @end
 
 NS_ASSUME_NONNULL_END
