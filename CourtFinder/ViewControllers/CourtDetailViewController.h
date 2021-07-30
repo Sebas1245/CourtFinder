@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CourtDetailViewController : ViewController
 @property (strong, nonatomic) Court *court;
 @property (strong, nonatomic) NSIndexPath *courtIndexPath;
-@property (weak, nonatomic) id<CourtDetailViewControllerDelegate>delegate;
+@property (weak, nonatomic) id<CourtDetailViewControllerDelegate> delegate;
 @end
 
 NS_ASSUME_NONNULL_END

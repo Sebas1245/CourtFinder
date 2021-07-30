@@ -11,7 +11,7 @@
 
 
 @implementation GoogleMapsAPI
-+ (void)searchNearbyCourts:(CLLocation*) location searchRadius:(int) radius completion:(void(^)(NSError* error, NSArray *searchResults))completion {
++ (void)searchNearbyCourts:(CLLocation*) location completion:(void(^)(NSError* error, NSArray *searchResults))completion {
         NSString *path = [[NSBundle mainBundle] pathForResource: @"Keys" ofType: @"plist"];
         NSDictionary *keysDictionary = [NSDictionary dictionaryWithContentsOfFile: path];
         NSString *APIKey = [keysDictionary objectForKey:@"googleMapsAPIKey"];

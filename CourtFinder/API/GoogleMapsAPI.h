@@ -14,7 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GoogleMapsAPI : NSObject
 +(void)searchNearbyCourts:(CLLocation*) location
-            searchRadius:(int) radius
             completion:(void(^)(NSError* error, NSArray *searchResults))completion;
 +(void)getDetailsForEachCourt:(NSArray*)results
                 userLocation:(CLLocation *)userLocation

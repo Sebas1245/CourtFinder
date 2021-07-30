@@ -28,18 +28,21 @@
     self.locationManager.delegate = self;
     self.locationManager.distanceFilter = kCLDistanceFilterNone;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    if ([self.locationManager respondsToSelector:@selector(setAllowsBackgroundLocationUpdates:)]) {
+        [self.locationManager setAllowsBackgroundLocationUpdates:YES];
+    }
     if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
         [self.locationManager requestAlwaysAuthorization];
     }
     [self.locationManager startMonitoringSignificantLocationChanges];
     self.courtsTableView.delegate = self;
     self.courtsTableView.dataSource = self;
-    [self setupLottieAnimation];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
     CLLocation *lastLocation = [locations lastObject];
     self.courts = [NSMutableArray new];
+    [self setupLottieAnimation];
     NSLog(@"Location changed lat %f - long %f", lastLocation.coordinate.latitude, lastLocation.coordinate.longitude);
     [self updateUserLocationWithCompletion:^(NSError * _Nonnull error, BOOL success) {
         if (error != nil) {
@@ -90,7 +93,7 @@
 }
 
 - (void)loadAPIDataWithCompletion:(void(^)(NSError *error, BOOL success))completion {
-    [GoogleMapsAPI searchNearbyCourts:self.locationManager.location searchRadius:5000 completion:^(NSError * _Nonnull error, NSArray<Court*> * searchResults) {
+    [GoogleMapsAPI searchNearbyCourts:self.locationManager.location completion:^(NSError * _Nonnull error, NSArray<Court*> * searchResults) {
         if (error != nil) {
             NSLog(@"Error fetching data from Google Maps API: @%@", error.localizedDescription);
             completion(error, false);
@@ -169,7 +172,6 @@
 - (void)tappedOptInOnCourtNumber:(NSIndexPath *)courtIndexPath{
     [self.courtsTableView reloadData];
 }
-
 
 - (void)setupLottieAnimation {
     self.lottieAnimation = [LOTAnimationView animationNamed:@"lottie-baseketball"];
