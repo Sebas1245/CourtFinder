@@ -179,6 +179,7 @@
     self.lottieAnimation.contentMode = UIViewContentModeScaleAspectFill;
     [self.view addSubview:self.lottieAnimation];
     [self.lottieAnimation play];
+    NSLog(@"Finished setting up animation");
 }
 #pragma mark - Navigation
 

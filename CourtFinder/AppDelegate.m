@@ -17,13 +17,15 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    NSString *path = [[NSBundle mainBundle] pathForResource: @"Keys" ofType: @"plist"];
+    NSDictionary *keysDictionary = [NSDictionary dictionaryWithContentsOfFile: path];
     ParseClientConfiguration *parseConfig = [ParseClientConfiguration configurationWithBlock:^(id<ParseMutableClientConfiguration>  _Nonnull configuration) {
-        configuration.applicationId = @"7LPddIsUoywmDmiFTrKkNDltMtcGdXUiFET3wsRm";
-        configuration.clientKey = @"11qSuPOvj3zChC6n9rz8KBONpCmtDvMz7qy8E3rR";
+        configuration.applicationId = [keysDictionary objectForKey:@"parseApplicationId"];
+        configuration.clientKey =[keysDictionary objectForKey:@"parseClientKey"];
         configuration.server = @"https://parseapi.back4app.com";
     }];
     [Parse initializeWithConfiguration:parseConfig];
-    [GMSPlacesClient provideAPIKey:@"AIzaSyDulKwf5yAA5noc_qcyoUA06MmF5OtPntQ"];
+    [GMSPlacesClient provideAPIKey:[keysDictionary objectForKey:@"googleMapsAPIKey"]];
     return YES;
 }
 

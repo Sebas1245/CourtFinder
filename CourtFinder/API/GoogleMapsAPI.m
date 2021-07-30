@@ -8,10 +8,13 @@
 #import "GoogleMapsAPI.h"
 #import "AFNetworking.h"
 
-static NSString *const APIKey = @"AIzaSyDulKwf5yAA5noc_qcyoUA06MmF5OtPntQ";
+
 
 @implementation GoogleMapsAPI
 + (void)searchNearbyCourts:(CLLocation*) location searchRadius:(int) radius completion:(void(^)(NSError* error, NSArray *searchResults))completion {
+        NSString *path = [[NSBundle mainBundle] pathForResource: @"Keys" ofType: @"plist"];
+        NSDictionary *keysDictionary = [NSDictionary dictionaryWithContentsOfFile: path];
+        NSString *APIKey = [keysDictionary objectForKey:@"googleMapsAPIKey"];
         NSString *requestParams = [NSString stringWithFormat:@"location=%f,%f&keyword=basketball&rankby=distance&key=%@",
                                    location.coordinate.latitude, location.coordinate.longitude, APIKey];
         NSString *requestURLString = @"https://maps.googleapis.com/maps/api/place/nearbysearch/json?";

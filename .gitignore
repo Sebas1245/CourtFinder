@@ -69,3 +69,6 @@ iOSInjectionProject/
 
 # MacOS generated files 
 **/.DS_Store
+
+# Keys file
+CourtFinder/Keys.plist
