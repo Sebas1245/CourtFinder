@@ -282,8 +282,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <switch opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" title="Playing solo" translatesAutoresizingMaskIntoConstraints="NO" id="LRb-A2-RTa">
+                                <rect key="frame" x="305" y="195" width="51" height="31"/>
+                                <color key="onTintColor" red="1" green="0.48596674200000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playing solo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uKT-s4-Lva">
+                                <rect key="frame" x="60" y="200" width="91" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3AM-2w-GuK">
-                                <rect key="frame" x="176" y="730" width="62" height="36"/>
+                                <rect key="frame" x="176" y="757" width="62" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Logout"/>
                                 <connections>
@@ -294,8 +304,13 @@
                         <viewLayoutGuide key="safeArea" id="WlO-1T-lfU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="3AM-2w-GuK" firstAttribute="centerX" secondItem="xh5-uu-7Ph" secondAttribute="centerX" id="FZ1-tG-rc4"/>
-                            <constraint firstItem="3AM-2w-GuK" firstAttribute="centerY" secondItem="xh5-uu-7Ph" secondAttribute="centerY" constant="300" id="ohI-pn-cMg"/>
+                            <constraint firstAttribute="trailing" secondItem="LRb-A2-RTa" secondAttribute="trailing" constant="60" id="2Nv-J9-UFN"/>
+                            <constraint firstItem="WlO-1T-lfU" firstAttribute="bottom" secondItem="3AM-2w-GuK" secondAttribute="bottom" constant="20" id="3p6-Qb-n1q"/>
+                            <constraint firstItem="LRb-A2-RTa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uKT-s4-Lva" secondAttribute="trailing" constant="115" id="Kuu-Rh-WoI"/>
+                            <constraint firstItem="uKT-s4-Lva" firstAttribute="top" secondItem="xh5-uu-7Ph" secondAttribute="top" constant="200" id="X79-eP-zxK"/>
+                            <constraint firstItem="uKT-s4-Lva" firstAttribute="leading" secondItem="xh5-uu-7Ph" secondAttribute="leading" constant="60" id="XAe-ga-sal"/>
+                            <constraint firstItem="LRb-A2-RTa" firstAttribute="centerY" secondItem="uKT-s4-Lva" secondAttribute="centerY" id="cYc-NG-Bl9"/>
+                            <constraint firstItem="3AM-2w-GuK" firstAttribute="centerX" secondItem="xh5-uu-7Ph" secondAttribute="centerX" id="tIU-fV-mgy"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="gearshape.fill" catalog="system" id="Pel-ps-Zgu"/>
