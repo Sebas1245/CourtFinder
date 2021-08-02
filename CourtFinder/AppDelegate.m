@@ -51,11 +51,13 @@
             if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
                 [self.locationManager requestAlwaysAuthorization];
             }
+            [self.locationManager startMonitoringSignificantLocationChanges];
         }
     }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    NSLog(@"Location manager picked up a change");
     self.currentUserLocation = locations.lastObject;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"locationUpdated" object:nil];
 }

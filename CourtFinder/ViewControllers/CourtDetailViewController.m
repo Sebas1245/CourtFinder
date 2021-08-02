@@ -118,16 +118,15 @@
         [self.detailOMWButton setBackgroundColor:[UIColor colorWithRed:0.80 green:0.80 blue:0.80 alpha:0.2]];
         [self.detailOMWButton setTitleColor:[UIColor colorWithRed:0.29 green:0.53 blue:0.91 alpha:0.5]
                                    forState:UIControlStateDisabled];
-        return;
     } else {
+        [self.detailOMWButton setEnabled:true];
+        [self.detailOMWButton setTitleColor:[UIColor systemBackgroundColor] forState:UIControlStateNormal];
         if (self.optedIn) {
-            [self.detailOMWButton setTitle:@"On my way!" forState:UIControlStateSelected];
+            [self.detailOMWButton setTitle:@"On my way!" forState:UIControlStateNormal];
             [self.detailOMWButton setBackgroundColor:[UIColor colorWithRed:0.80 green:0.39 blue:0.00 alpha:1.0]];
-            [self.detailOMWButton setSelected:true];
         } else {
             [self.detailOMWButton setTitle:@"Count me in!" forState:UIControlStateNormal];
             [self.detailOMWButton setBackgroundColor:[UIColor colorWithRed:1.00 green:0.49 blue:0.00 alpha:1.0]];
-            [self.detailOMWButton setSelected:false];
         }
     }
 }
