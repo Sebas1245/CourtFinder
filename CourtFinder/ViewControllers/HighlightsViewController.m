@@ -7,6 +7,7 @@
 
 #import "HighlightsViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "Highlight.h"
 
 @interface HighlightsViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @end
@@ -37,7 +38,14 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     NSURL *videoURL = [info objectForKey:UIImagePickerControllerMediaURL];
     NSLog(@"VideoURL = %@", videoURL);
-    [picker dismissViewControllerAnimated:YES completion:NULL];
+    [Highlight uploadHighlight:videoURL completion:^(BOOL succeeded, NSError * _Nullable error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        } else {
+            NSLog(@"Successfully uploaded the highlight");
+        }
+        [picker dismissViewControllerAnimated:YES completion:NULL];
+    }];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
