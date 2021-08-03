@@ -43,6 +43,7 @@
             courtLocation.latitude = court.location.coordinate.latitude;
             courtLocation.longitude = court.location.coordinate.longitude;
             [locationQuery whereKey:@"lastLocation" nearGeoPoint:courtLocation withinKilometers:0.1];
+            [locationQuery whereKey:@"playingSolo" notEqualTo:@YES];
             [locationQuery whereKey:@"username" notContainedIn:optInUserUsernames];
             [locationQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable atLocationUsers, NSError * _Nullable error) {
                 if (error != nil) {

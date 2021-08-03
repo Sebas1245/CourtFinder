@@ -283,12 +283,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <switch opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" title="Playing solo" translatesAutoresizingMaskIntoConstraints="NO" id="LRb-A2-RTa">
-                                <rect key="frame" x="305" y="195" width="51" height="31"/>
+                                <rect key="frame" x="305" y="203" width="51" height="31"/>
                                 <color key="onTintColor" red="1" green="0.48596674200000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="switchTapped:" destination="gaR-V8-n0W" eventType="valueChanged" id="Hvb-0Z-xtA"/>
+                                </connections>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playing solo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uKT-s4-Lva">
-                                <rect key="frame" x="60" y="200" width="91" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playing solo" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uKT-s4-Lva">
+                                <rect key="frame" x="60" y="208" width="97.5" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -300,20 +303,33 @@
                                     <action selector="handleLogout:" destination="gaR-V8-n0W" eventType="touchUpInside" id="VYJ-gZ-w7w"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kfy-GX-GIC">
+                                <rect key="frame" x="60" y="69" width="294" height="29"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WlO-1T-lfU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="LRb-A2-RTa" secondAttribute="trailing" constant="60" id="2Nv-J9-UFN"/>
                             <constraint firstItem="WlO-1T-lfU" firstAttribute="bottom" secondItem="3AM-2w-GuK" secondAttribute="bottom" constant="20" id="3p6-Qb-n1q"/>
-                            <constraint firstItem="LRb-A2-RTa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uKT-s4-Lva" secondAttribute="trailing" constant="115" id="Kuu-Rh-WoI"/>
-                            <constraint firstItem="uKT-s4-Lva" firstAttribute="top" secondItem="xh5-uu-7Ph" secondAttribute="top" constant="200" id="X79-eP-zxK"/>
+                            <constraint firstItem="LRb-A2-RTa" firstAttribute="trailing" secondItem="Kfy-GX-GIC" secondAttribute="trailing" id="EFE-tW-4th"/>
+                            <constraint firstItem="LRb-A2-RTa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uKT-s4-Lva" secondAttribute="trailing" constant="90" id="Kuu-Rh-WoI"/>
+                            <constraint firstItem="Kfy-GX-GIC" firstAttribute="top" secondItem="WlO-1T-lfU" secondAttribute="top" constant="25" id="Txh-wq-DRP"/>
                             <constraint firstItem="uKT-s4-Lva" firstAttribute="leading" secondItem="xh5-uu-7Ph" secondAttribute="leading" constant="60" id="XAe-ga-sal"/>
                             <constraint firstItem="LRb-A2-RTa" firstAttribute="centerY" secondItem="uKT-s4-Lva" secondAttribute="centerY" id="cYc-NG-Bl9"/>
+                            <constraint firstItem="Kfy-GX-GIC" firstAttribute="leading" secondItem="uKT-s4-Lva" secondAttribute="leading" id="g3r-Yf-ARb"/>
                             <constraint firstItem="3AM-2w-GuK" firstAttribute="centerX" secondItem="xh5-uu-7Ph" secondAttribute="centerX" id="tIU-fV-mgy"/>
+                            <constraint firstItem="LRb-A2-RTa" firstAttribute="top" secondItem="Kfy-GX-GIC" secondAttribute="bottom" constant="105" id="vSZ-aU-KwA"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="gearshape.fill" catalog="system" id="Pel-ps-Zgu"/>
+                    <connections>
+                        <outlet property="soloOptionSwitch" destination="LRb-A2-RTa" id="2WJ-5X-3ic"/>
+                        <outlet property="usernameLabel" destination="Kfy-GX-GIC" id="3Pe-XN-nbl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="th3-ut-cZ2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

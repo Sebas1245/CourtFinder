@@ -62,7 +62,9 @@
                         [self.refreshControl endRefreshing];
                         if (success) {
                             NSLog(@"Successfully reloaded API data");
-                            [self.delegate updatedCourt:self.courts[self.selectedCourtIndexPath.row]];
+                            if (self.courts.count > 0) {
+                                [self.delegate updatedCourt:self.courts[self.selectedCourtIndexPath.row]];
+                            }
                             self.displayCourts = self.courts;
                             [self.courtsTableView reloadData];
                             [UIView animateWithDuration:0.4
@@ -87,7 +89,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.courts.count;
+    return self.displayCourts.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
