@@ -33,6 +33,8 @@
 		79F77876269DF061000814E4 /* CourtCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F77875269DF061000814E4 /* CourtCell.m */; };
 		79F77879269E14FF000814E4 /* Court.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F77878269E14FF000814E4 /* Court.m */; };
 		79F7787E269E2EFE000814E4 /* GoogleMapsAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F7787D269E2EFE000814E4 /* GoogleMapsAPI.m */; };
+		79F9209226B9CE7900F34327 /* HighlightsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F9209126B9CE7900F34327 /* HighlightsViewController.m */; };
+		79F9209426B9D09200F34327 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F9209326B9D09200F34327 /* MobileCoreServices.framework */; };
 		B90D590D03219CCEFAEF5BEF /* Pods_CourtFinder_CourtFinderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 398DBE597A37800C84D92D94 /* Pods_CourtFinder_CourtFinderUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +108,9 @@
 		79F77878269E14FF000814E4 /* Court.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Court.m; sourceTree = "<group>"; };
 		79F7787C269E2EFE000814E4 /* GoogleMapsAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoogleMapsAPI.h; sourceTree = "<group>"; };
 		79F7787D269E2EFE000814E4 /* GoogleMapsAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoogleMapsAPI.m; sourceTree = "<group>"; };
+		79F9209026B9CE7900F34327 /* HighlightsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HighlightsViewController.h; sourceTree = "<group>"; };
+		79F9209126B9CE7900F34327 /* HighlightsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HighlightsViewController.m; sourceTree = "<group>"; };
+		79F9209326B9D09200F34327 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		A1A88E80A9C537756766ABE0 /* Pods-CourtFinder-CourtFinderUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourtFinder-CourtFinderUITests.release.xcconfig"; path = "Target Support Files/Pods-CourtFinder-CourtFinderUITests/Pods-CourtFinder-CourtFinderUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DA3F0E07CA8370EA00FC7492 /* Pods-CourtFinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourtFinder.debug.xcconfig"; path = "Target Support Files/Pods-CourtFinder/Pods-CourtFinder.debug.xcconfig"; sourceTree = "<group>"; };
 		FF9FC4D691A99536F733CA5E /* Pods-CourtFinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourtFinder.release.xcconfig"; path = "Target Support Files/Pods-CourtFinder/Pods-CourtFinder.release.xcconfig"; sourceTree = "<group>"; };
@@ -117,6 +122,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DEF4A24B1CA0861A5A76D60 /* Pods_CourtFinder.framework in Frameworks */,
+				79F9209426B9D09200F34327 /* MobileCoreServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,6 +148,7 @@
 		7874165C39335AD612B83C45 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				79F9209326B9D09200F34327 /* MobileCoreServices.framework */,
 				5B7FA35AA86CE0F27B0C58E4 /* Pods_CourtFinder.framework */,
 				398DBE597A37800C84D92D94 /* Pods_CourtFinder_CourtFinderUITests.framework */,
 				5D667A277B6EB1F5A1C206B6 /* Pods_CourtFinderTests.framework */,
@@ -240,6 +247,8 @@
 				791EB27D26A2350A00344C20 /* CourtDetailViewController.m */,
 				7986493126A742BE0047D60E /* FullScreenImagesViewController.h */,
 				7986493226A742BE0047D60E /* FullScreenImagesViewController.m */,
+				79F9209026B9CE7900F34327 /* HighlightsViewController.h */,
+				79F9209126B9CE7900F34327 /* HighlightsViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -578,6 +587,7 @@
 				79F7786D269CDF29000814E4 /* Alert.m in Sources */,
 				79F77867269CC418000814E4 /* SignUpViewController.m in Sources */,
 				794F71A1269CBB8800529339 /* main.m in Sources */,
+				79F9209226B9CE7900F34327 /* HighlightsViewController.m in Sources */,
 				794F7193269CBB8700529339 /* SceneDelegate.m in Sources */,
 				79F77864269CC40A000814E4 /* LoginViewController.m in Sources */,
 			);

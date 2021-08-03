@@ -272,7 +272,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QHZ-mR-lQy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2666.666666666667" y="1534.8214285714284"/>
+            <point key="canvasLocation" x="1510" y="2288"/>
         </scene>
         <!--Settings-->
         <scene sceneID="Kbg-96-skd">
@@ -453,7 +453,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F15-0v-ZHk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="426.08695652173918" y="1534.8214285714284"/>
+            <point key="canvasLocation" x="-484" y="2288"/>
         </scene>
         <!--Court Detail View Controller-->
         <scene sceneID="K6v-Kt-9TW">
@@ -645,19 +645,20 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1591.304347826087" y="1534.8214285714284"/>
+            <point key="canvasLocation" x="541" y="2288"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="C0p-Ck-QBr">
             <objects>
                 <tabBarController storyboardIdentifier="MainTabBar" id="gHu-dm-qWq" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="glY-ve-xne">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" itemPositioning="centered" id="glY-ve-xne">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="kRA-gV-igx" kind="relationship" relationship="viewControllers" id="sd2-m2-rsN"/>
+                        <segue destination="73r-Cz-B1k" kind="relationship" relationship="viewControllers" id="0jE-u7-9uh"/>
                         <segue destination="gaR-V8-n0W" kind="relationship" relationship="viewControllers" id="jbq-XO-qf4"/>
                     </connections>
                 </tabBarController>
@@ -665,11 +666,51 @@
             </objects>
             <point key="canvasLocation" x="541" y="805"/>
         </scene>
+        <!--Highlights-->
+        <scene sceneID="Oga-L2-UgZ">
+            <objects>
+                <navigationController id="73r-Cz-B1k" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Highlights" image="bolt.fill" catalog="system" id="YAi-jr-v6P"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tom-IX-AAL">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="t79-Hy-3l6" kind="relationship" relationship="rootViewController" id="LAm-Is-iuj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t5b-5A-Pz8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="541" y="1535"/>
+        </scene>
+        <!--Highlights View Controller-->
+        <scene sceneID="kiu-qR-Q1H">
+            <objects>
+                <viewController id="t79-Hy-3l6" customClass="HighlightsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dKB-SO-7KH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Gx5-6w-tZY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="MZS-Sh-yqF">
+                        <barButtonItem key="rightBarButtonItem" image="camera.fill" catalog="system" id="q2w-Xm-0uw">
+                            <color key="tintColor" red="1" green="0.48596674200000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="tappedUploadButton:" destination="t79-Hy-3l6" id="Rs8-Eh-r23"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5qD-Rf-HEW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1445" y="1535"/>
+        </scene>
         <!--Courts-->
         <scene sceneID="P6S-bh-6Iu">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kRA-gV-igx" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Courts" image="bolt.fill" catalog="system" id="dwZ-QN-2kh"/>
+                    <tabBarItem key="tabBarItem" title="Courts" image="map.fill" catalog="system" id="dwZ-QN-2kh"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="u7a-2e-Pgt">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -686,12 +727,14 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="P4i-qQ-2Qn"/>
+        <segue reference="l7Y-hE-am8"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bolt.fill" catalog="system" width="101" height="128"/>
+        <image name="camera.fill" catalog="system" width="128" height="94"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="location.fill.viewfinder" catalog="system" width="128" height="115"/>
+        <image name="map.fill" catalog="system" width="128" height="110"/>
         <image name="person.crop.circle.fill.badge.checkmark" catalog="system" width="128" height="113"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <image name="viewfinder" catalog="system" width="128" height="115"/>
