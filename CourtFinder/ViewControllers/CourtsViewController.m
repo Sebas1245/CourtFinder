@@ -19,17 +19,23 @@
 @interface CourtsViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, CourtDetailViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *courtsTableView;
 @property (strong, nonatomic) NSMutableArray<Court*> *courts;
+@property (strong, nonatomic) NSMutableArray<Court*> *displayCourts;
 @property (strong, nonatomic) LOTAnimationView *lottieAnimation;
 @property (strong, nonatomic) NSIndexPath *selectedCourtIndexPath;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 @end
 
 @implementation CourtsViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.courts = [NSMutableArray new];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateViewData) name:@"locationUpdated" object:nil];
     [self updateViewData];
     self.courtsTableView.delegate = self;
     self.courtsTableView.dataSource = self;
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(updateViewData) forControlEvents:UIControlEventValueChanged];
+    self.courtsTableView.refreshControl = self.refreshControl;
 }
 
 - (void)updateViewData {
@@ -50,10 +56,14 @@
                     NSString *errorMsg = [NSString stringWithFormat:@"Error updating database: %@", error.localizedDescription];
                     [[Alert new] showErrAlertOnView:self message:errorMsg title:@"Internal server error"];
                 } else {
+                    NSLog(@"finished opt in cleanups");
                     [self loadAPIDataFromLocation:appDelegate.currentUserLocation completion:^(NSError *error, BOOL success) {
+                        NSLog(@"Finished load api data from location");
+                        [self.refreshControl endRefreshing];
                         if (success) {
                             NSLog(@"Successfully reloaded API data");
                             [self.delegate updatedCourt:self.courts[self.selectedCourtIndexPath.row]];
+                            self.displayCourts = self.courts;
                             [self.courtsTableView reloadData];
                             [UIView animateWithDuration:0.4
                                              animations:^{
@@ -82,7 +92,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CourtCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CourtCell"];
-    Court *court = self.courts[indexPath.row];
+    Court *court = self.displayCourts[indexPath.row];
     cell.court = court;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
