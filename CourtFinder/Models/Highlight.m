@@ -35,4 +35,11 @@
     }
     return [PFFileObject fileObjectWithData:videoData contentType:@"video/mp4"];
 }
+
++ (void)getHighlightsWithCompletion:(void(^)(NSError *error, NSArray <Highlight*> *highlights))completion {
+    PFQuery *highlightQuery = [PFQuery queryWithClassName:@"Highlight"];
+    [highlightQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        completion(error, objects);
+    }];
+}
 @end

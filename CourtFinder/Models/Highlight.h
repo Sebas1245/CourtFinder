@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) PFFileObject *highlightVideo;
 +(void)uploadHighlight:(NSURL *)highlightVideoURL completion:(PFBooleanResultBlock  _Nullable)completion;
 +(PFFileObject *)getPFFileFromVideoURL:(NSURL * _Nullable)videoUrl;
++(void)getHighlightsWithCompletion:(void(^)(NSError *error, NSArray <Highlight*> *highlights))completion;
 @end
 
 NS_ASSUME_NONNULL_END

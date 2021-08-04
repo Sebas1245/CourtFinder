@@ -25,6 +25,8 @@
 		7986493026A611B10047D60E /* Formatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7986492F26A611B10047D60E /* Formatter.m */; };
 		7986493326A742BE0047D60E /* FullScreenImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7986493226A742BE0047D60E /* FullScreenImagesViewController.m */; };
 		7986493B26A9A9A30047D60E /* CourtUsersUpdates.m in Sources */ = {isa = PBXBuildFile; fileRef = 7986493A26A9A9A30047D60E /* CourtUsersUpdates.m */; };
+		79B6773526BADC690042931B /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F9209326B9D09200F34327 /* MobileCoreServices.framework */; };
+		79B6773826BADE4D0042931B /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79B6773726BADE4D0042931B /* AVKit.framework */; };
 		79CF8D7126B0B745002DDD9C /* OptIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CF8D7026B0B745002DDD9C /* OptIn.m */; };
 		79F77864269CC40A000814E4 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F77863269CC40A000814E4 /* LoginViewController.m */; };
 		79F77867269CC418000814E4 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F77866269CC418000814E4 /* SignUpViewController.m */; };
@@ -35,7 +37,6 @@
 		79F77879269E14FF000814E4 /* Court.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F77878269E14FF000814E4 /* Court.m */; };
 		79F7787E269E2EFE000814E4 /* GoogleMapsAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F7787D269E2EFE000814E4 /* GoogleMapsAPI.m */; };
 		79F9209226B9CE7900F34327 /* HighlightsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F9209126B9CE7900F34327 /* HighlightsViewController.m */; };
-		79F9209426B9D09200F34327 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F9209326B9D09200F34327 /* MobileCoreServices.framework */; };
 		B90D590D03219CCEFAEF5BEF /* Pods_CourtFinder_CourtFinderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 398DBE597A37800C84D92D94 /* Pods_CourtFinder_CourtFinderUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +94,8 @@
 		7986493226A742BE0047D60E /* FullScreenImagesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FullScreenImagesViewController.m; sourceTree = "<group>"; };
 		7986493926A9A9A30047D60E /* CourtUsersUpdates.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourtUsersUpdates.h; sourceTree = "<group>"; };
 		7986493A26A9A9A30047D60E /* CourtUsersUpdates.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourtUsersUpdates.m; sourceTree = "<group>"; };
+		79B6773326BADB600042931B /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		79B6773726BADE4D0042931B /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		79CF8D6F26B0B745002DDD9C /* OptIn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OptIn.h; sourceTree = "<group>"; };
 		79CF8D7026B0B745002DDD9C /* OptIn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OptIn.m; sourceTree = "<group>"; };
 		79F77862269CC40A000814E4 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -125,7 +128,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DEF4A24B1CA0861A5A76D60 /* Pods_CourtFinder.framework in Frameworks */,
-				79F9209426B9D09200F34327 /* MobileCoreServices.framework in Frameworks */,
+				79B6773826BADE4D0042931B /* AVKit.framework in Frameworks */,
+				79B6773526BADC690042931B /* MobileCoreServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +155,8 @@
 		7874165C39335AD612B83C45 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				79B6773726BADE4D0042931B /* AVKit.framework */,
+				79B6773326BADB600042931B /* MediaPlayer.framework */,
 				79F9209326B9D09200F34327 /* MobileCoreServices.framework */,
 				5B7FA35AA86CE0F27B0C58E4 /* Pods_CourtFinder.framework */,
 				398DBE597A37800C84D92D94 /* Pods_CourtFinder_CourtFinderUITests.framework */,
