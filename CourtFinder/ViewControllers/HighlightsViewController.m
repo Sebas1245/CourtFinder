@@ -9,9 +9,12 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "Highlight.h"
 #import <AVKit/AVKit.h>
+#import "HighlightCell.h"
 
-@interface HighlightsViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface HighlightsViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UIScrollView *fullScreenSV;
+@property (nonatomic, strong) NSArray <Highlight*> *highlights;
+@property (weak, nonatomic) IBOutlet UITableView *highlightTableView;
 @property CGFloat viewWidth;
 @property CGFloat viewHeight;
 @end
@@ -20,19 +23,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.viewWidth = self.view.frame.size.width;
-    self.viewHeight = self.view.frame.size.height;
-    self.fullScreenSV = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.viewWidth , self.viewHeight)];
-    [self.fullScreenSV setPagingEnabled:YES];
-    [self setupHighlightVideosWithCompletion:^(NSError * _Nonnull error, int highlightCount) {
-        if (error != nil) {
-            // handle the error
-        } else {
-            self.fullScreenSV.backgroundColor = [UIColor systemBackgroundColor];
-            self.fullScreenSV.contentSize = CGSizeMake(self.viewWidth, self.viewHeight * highlightCount);
-            [self.view addSubview:self.fullScreenSV];
-        }
-    }];
+    self.highlightTableView.delegate = self;
+    self.highlightTableView.dataSource = self;
+    self.highlightTableView.rowHeight = self.view.frame.size.height;
+    [self.highlightTableView setPagingEnabled:YES];
+    [self fetchHighlights];
 }
 
 - (IBAction)tappedUploadButton:(id)sender {
@@ -68,35 +63,25 @@
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
-- (void)setupHighlightVideosWithCompletion:(void(^)(NSError *error, int highlightCount))completion {
+- (void)fetchHighlights {
     [Highlight getHighlightsWithCompletion:^(NSError * _Nonnull error, NSArray<Highlight *> * _Nonnull highlights) {
         if (error != nil) {
-            NSLog(@"Error: %@", error.localizedDescription);
-            completion(error, 0);
+            NSLog(@"error: %@", error.localizedDescription);
         } else {
-            int index = 0;
-            for (Highlight *highlight in highlights) {
-                NSURL *highlightURL = [NSURL URLWithString:highlight.highlightVideo.url];
-                AVPlayer *highlightPlayer = [AVPlayer playerWithURL:highlightURL];
-                highlightPlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
-                AVPlayerLayer *highlightPlayerLayer = [AVPlayerLayer playerLayerWithPlayer:highlightPlayer];
-                highlightPlayerLayer.frame = CGRectMake(0, self.viewHeight * index - 40, self.viewWidth, self.viewHeight-40);
-                highlightPlayerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-                [self.fullScreenSV.layer addSublayer:highlightPlayerLayer];
-                [[NSNotificationCenter defaultCenter] addObserver:self
-                                                         selector:@selector(playerItemDidEnd:)
-                                                             name:AVPlayerItemDidPlayToEndTimeNotification
-                                                           object:[highlightPlayer currentItem]];
-                [highlightPlayer play];
-            }
-            completion(nil, (int)highlights.count);
+            self.highlights = highlights;
+            NSLog(@"Finished fetching highlights");
+            [self.highlightTableView reloadData];
         }
     }];
 }
 
-- (void)playerItemDidEnd:(NSNotification *)notification {
-    AVPlayerItem *playerItem = [notification object];
-    NSLog(@"Stopped playing %@", playerItem.asset);
-    [playerItem seekToTime:kCMTimeZero completionHandler:nil];
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.highlights.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    HighlightCell *cell = [self.highlightTableView dequeueReusableCellWithIdentifier:@"HighlightTableCell"];
+    cell.highlight = self.highlights[indexPath.row];
+    return cell;
 }
 @end

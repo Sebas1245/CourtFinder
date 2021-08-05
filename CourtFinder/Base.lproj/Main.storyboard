@@ -690,8 +690,30 @@
                     <view key="view" contentMode="scaleToFill" id="dKB-SO-7KH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xp9-g0-zoe">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HighlightTableCell" id="1sM-qV-5lp" customClass="HighlightCell">
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1sM-qV-5lp" id="mWQ-Md-N4T">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Gx5-6w-tZY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="xp9-g0-zoe" firstAttribute="top" secondItem="dKB-SO-7KH" secondAttribute="top" id="LLn-ok-wGQ"/>
+                            <constraint firstAttribute="trailing" secondItem="xp9-g0-zoe" secondAttribute="trailing" id="h22-fX-CVp"/>
+                            <constraint firstItem="xp9-g0-zoe" firstAttribute="leading" secondItem="dKB-SO-7KH" secondAttribute="leading" id="ppr-MK-GNG"/>
+                            <constraint firstAttribute="bottom" secondItem="xp9-g0-zoe" secondAttribute="bottom" id="yee-PG-Owy"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MZS-Sh-yqF">
                         <barButtonItem key="rightBarButtonItem" image="camera.fill" catalog="system" id="q2w-Xm-0uw">
@@ -701,10 +723,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="highlightTableView" destination="xp9-g0-zoe" id="eCp-3Z-Hpr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5qD-Rf-HEW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1445" y="1535"/>
+            <point key="canvasLocation" x="1444.9275362318842" y="1534.8214285714284"/>
         </scene>
         <!--Courts-->
         <scene sceneID="P6S-bh-6Iu">

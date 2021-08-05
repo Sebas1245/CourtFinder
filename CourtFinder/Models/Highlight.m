@@ -38,6 +38,7 @@
 
 + (void)getHighlightsWithCompletion:(void(^)(NSError *error, NSArray <Highlight*> *highlights))completion {
     PFQuery *highlightQuery = [PFQuery queryWithClassName:@"Highlight"];
+    [highlightQuery orderByDescending:@"createdAt"];
     [highlightQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         completion(error, objects);
     }];

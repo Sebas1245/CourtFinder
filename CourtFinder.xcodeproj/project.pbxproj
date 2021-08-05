@@ -20,6 +20,7 @@
 		794F71A1269CBB8800529339 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F71A0269CBB8800529339 /* main.m */; };
 		794F71AB269CBB8800529339 /* CourtFinderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F71AA269CBB8800529339 /* CourtFinderTests.m */; };
 		794F71B6269CBB8800529339 /* CourtFinderUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F71B5269CBB8800529339 /* CourtFinderUITests.m */; };
+		7955AB7126BB458E0077684D /* HighlightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7955AB7026BB458E0077684D /* HighlightCell.m */; };
 		79721CA726B9E4890092A63B /* Highlight.m in Sources */ = {isa = PBXBuildFile; fileRef = 79721CA626B9E4890092A63B /* Highlight.m */; };
 		7977F01326B34C8300930037 /* lottie-baseketball.json in Resources */ = {isa = PBXBuildFile; fileRef = 7977F01226B34C8300930037 /* lottie-baseketball.json */; };
 		7986493026A611B10047D60E /* Formatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7986492F26A611B10047D60E /* Formatter.m */; };
@@ -85,6 +86,8 @@
 		794F71B1269CBB8800529339 /* CourtFinderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CourtFinderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		794F71B5269CBB8800529339 /* CourtFinderUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourtFinderUITests.m; sourceTree = "<group>"; };
 		794F71B7269CBB8800529339 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7955AB6F26BB458E0077684D /* HighlightCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HighlightCell.h; sourceTree = "<group>"; };
+		7955AB7026BB458E0077684D /* HighlightCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HighlightCell.m; sourceTree = "<group>"; };
 		79721CA526B9E4890092A63B /* Highlight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Highlight.h; sourceTree = "<group>"; };
 		79721CA626B9E4890092A63B /* Highlight.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Highlight.m; sourceTree = "<group>"; };
 		7977F01226B34C8300930037 /* lottie-baseketball.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "lottie-baseketball.json"; sourceTree = "<group>"; };
@@ -282,6 +285,8 @@
 			children = (
 				79F77874269DF061000814E4 /* CourtCell.h */,
 				79F77875269DF061000814E4 /* CourtCell.m */,
+				7955AB6F26BB458E0077684D /* HighlightCell.h */,
+				7955AB7026BB458E0077684D /* HighlightCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -589,6 +594,7 @@
 				794F7196269CBB8700529339 /* ViewController.m in Sources */,
 				7986493326A742BE0047D60E /* FullScreenImagesViewController.m in Sources */,
 				79721CA726B9E4890092A63B /* Highlight.m in Sources */,
+				7955AB7126BB458E0077684D /* HighlightCell.m in Sources */,
 				794F7190269CBB8700529339 /* AppDelegate.m in Sources */,
 				79CF8D7126B0B745002DDD9C /* OptIn.m in Sources */,
 				7986493026A611B10047D60E /* Formatter.m in Sources */,
