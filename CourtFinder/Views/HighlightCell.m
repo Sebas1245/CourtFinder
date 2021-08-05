@@ -11,6 +11,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    [self layoutIfNeeded];
 }
 
 - (void)setHighlight:(Highlight *)highlight {

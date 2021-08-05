@@ -25,7 +25,6 @@
     [super viewDidLoad];
     self.highlightTableView.delegate = self;
     self.highlightTableView.dataSource = self;
-    self.highlightTableView.rowHeight = self.view.frame.size.height;
     [self.highlightTableView setPagingEnabled:YES];
     [self fetchHighlights];
 }
@@ -81,7 +80,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HighlightCell *cell = [self.highlightTableView dequeueReusableCellWithIdentifier:@"HighlightTableCell"];
+    cell.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    cell.contentView.frame = cell.frame;
     cell.highlight = self.highlights[indexPath.row];
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return self.view.frame.size.height;
 }
 @end
