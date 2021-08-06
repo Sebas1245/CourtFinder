@@ -27,8 +27,11 @@
 }
 
 + (void)getUserCountForCourt:(Court *)court completion:(void(^)(NSError *error, int count))completion {
+    PFQuery *soloOptIns = [PFUser query];
+    [soloOptIns whereKey:@"playingSolo" equalTo:@YES];
     PFQuery *optInQuery = [PFQuery queryWithClassName:@"OptIn"];
     [optInQuery whereKey:@"headedToPark" equalTo:court.placeID];
+    [optInQuery whereKey:@"user" doesNotMatchQuery:soloOptIns];
     [optInQuery includeKey:@"user"];
     [optInQuery findObjectsInBackgroundWithBlock:^(NSArray* _Nullable optInUsers, NSError * _Nullable error) {
         if (error != nil) {

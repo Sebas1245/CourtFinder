@@ -112,7 +112,7 @@
 }
 
 - (void)updateOptedInButton {
-    if (self.court.distanceFromUser < 100) {
+    if (self.court.distanceFromUser < 100 || [PFUser.currentUser[@"playingSolo"] boolValue]) {
         [self.detailOMWButton setEnabled:false];
         [self.detailOMWButton setTitle:@"Count me in!" forState:UIControlStateDisabled];
         [self.detailOMWButton setBackgroundColor:[UIColor colorWithRed:0.80 green:0.80 blue:0.80 alpha:0.2]];
